@@ -1,0 +1,92 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Debug AutoTestIA (File Input)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
+            "args": [
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2024-2025/2nd sem - Procesamiento del Lenguaje Natural/Tema 1.pptx",
+                "-n", "15", //"2",
+                "--provider", "anthropic",
+                "--generator-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
+                "--reviewer-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
+                "--use-llm-review",
+                "-f", "none", //"gift", "wooclap", "rexams"
+                "-o", "generated/tema1_new.md",
+                // "--log-level", "DEBUG",
+            ],
+            "console": "integratedTerminal", // Run in VS Code's integrated terminal
+            "justMyCode": true // Debug only user code by default
+        },
+        {
+            "name": "Python: Debug Generate Regex (Instructions)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                // No positional input file argument
+                "-n", "10",
+                "-o", "generated/python_regex_questions.md",
+                "--provider", "anthropic", // Or change to your preferred provider
+                "--generator-instructions", "Generate multiple-choice questions specifically about Python regular expressions using the 're' module. Focus on questions requiring either synthesis (writing a regex pattern based on a description) or analysis (determining what a given regex pattern matches or does). Cover common concepts like character classes, quantifiers, grouping, anchors, lookarounds, and standard 're' functions (e.g., search, match, findall, sub).",
+                "--use-llm-review",
+                "--reviewer-instructions", "Ensure questions accurately test Python regex synthesis or analysis as requested. Verify the correctness of regex patterns, expected matches, and explanations. Ensure distractors are plausible but incorrect applications or interpretations of regex concepts.",
+                "--language", "Spanish"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Debug Resume Wooclap",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "--resume-from-md", "generated/all_subset.md", // Resume from this file
+                "-f", "wooclap", // Output Wooclap format
+                "--shuffle-questions", "123",
+                "--shuffle-answers", "123",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Debug Resume R/Exams",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "--resume-from-md", "generated/all_subset.md", // Resume from this file
+                "-f", "rexams", // Output R/Exams format
+                "--rexams-title", "Procesado del Lenguaje Natural - Examen Final",
+                "--rexams-course", "Grado en Ciencia de Datos",
+                "--shuffle-questions", "123",
+                "--shuffle-answers", "123",
+                "--log-level", "DEBUG"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "AutoTestIA: Select Questions Script",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/select_questions.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}", // Run from project root
+            "args": [
+                // Example arguments - CHANGE THESE
+                "generated/all.md", // Input MD file
+                "generated/all_subset.md", // Output MD file
+                "-n", "10", // Number of questions
+                "-s", "123" // Optional seed
+            ]
+        }
+    ]
+} 
