@@ -10,15 +10,15 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
             "args": [
-                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2024-2025/2nd sem - Procesamiento del Lenguaje Natural/Tema 2.pptx",
-                "-n", "15", //"2",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2024-2025/2nd sem - Procesamiento del Lenguaje Natural/Tema 5b.pptx",
+                "-n", "4", //"2",
                 "--provider", "anthropic",
                 "--generator-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
                 "--reviewer-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
                 "--use-llm-review",
                 "-f", "none", //"gift", "wooclap", "rexams"
-                "-o", "generated/tema2_new.md",
-                "--generator-instructions", "Focus on the topics of OSI, HTTP, HTML, and spacy token classifications",
+                "-o", "generated/tema5b_new.md",
+                "--generator-instructions", "Create questions about the specifics of LDA, LSA / LSI",
                 // "--log-level", "DEBUG",
             ],
             "console": "integratedTerminal", // Run in VS Code's integrated terminal
@@ -62,7 +62,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
-                "--resume-from-md", "generated/all_subset.md", // Resume from this file
+                "--resume-from-md", "generated/splits/final.md", // Resume from this file
                 "-f", "rexams", // Output R/Exams format
                 "--rexams-title", "Procesado del Lenguaje Natural - Examen Final",
                 "--rexams-course", "Grado en Ciencia de Datos",
@@ -74,19 +74,18 @@
             "justMyCode": true
         },
         {
-            "name": "AutoTestIA: Select Questions Script",
+            "name": "AutoTestIA: Split Questions Script",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/select_questions.py",
+            "program": "${workspaceFolder}/output_formatter/split_markdown.py",
             "console": "integratedTerminal",
             "justMyCode": true,
             "cwd": "${workspaceFolder}", // Run from project root
             "args": [
-                // Example arguments - CHANGE THESE
                 "generated/all.md", // Input MD file
-                "generated/all_subset.md", // Output MD file
-                "-n", "10", // Number of questions
-                "-s", "123" // Optional seed
+                "--splits", "0.5", "0.5", // Split proportions
+                "--output-dir", "generated/splits", // Output directory
+                "--shuffle-questions", "123" // Shuffle seed
             ]
         }
     ]
