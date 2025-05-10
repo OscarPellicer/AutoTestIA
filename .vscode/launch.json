@@ -10,14 +10,15 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
             "args": [
-                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2024-2025/2nd sem - Procesamiento del Lenguaje Natural/Tema 1.pptx",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2024-2025/2nd sem - Procesamiento del Lenguaje Natural/Tema 2.pptx",
                 "-n", "15", //"2",
                 "--provider", "anthropic",
                 "--generator-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
                 "--reviewer-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
                 "--use-llm-review",
                 "-f", "none", //"gift", "wooclap", "rexams"
-                "-o", "generated/tema1_new.md",
+                "-o", "generated/tema2_new.md",
+                "--generator-instructions", "Focus on the topics of OSI, HTTP, HTML, and spacy token classifications",
                 // "--log-level", "DEBUG",
             ],
             "console": "integratedTerminal", // Run in VS Code's integrated terminal
