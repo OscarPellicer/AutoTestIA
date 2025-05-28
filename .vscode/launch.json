@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Debug AutoTestIA (File Input)",
+            "name": "AutoTestIA (File Input)",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
@@ -25,7 +25,7 @@
             "justMyCode": true // Debug only user code by default
         },
         {
-            "name": "Python: Debug Generate Regex (Instructions)",
+            "name": "Generate Regex (Instructions)",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -43,7 +43,7 @@
             "justMyCode": true
         },
         {
-            "name": "Python: Debug Resume Wooclap",
+            "name": "Resume from .md to Wooclap",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -57,24 +57,25 @@
             "justMyCode": true
         },
         {
-            "name": "Python: Debug Resume R/Exams",
+            "name": "Resume from .md to R/Exams",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
                 "--resume-from-md", "generated/splits/final.md", // Resume from this file
                 "-f", "rexams", // Output R/Exams format
-                "--rexams-title", "Procesado del Lenguaje Natural - Examen Final",
+                "--rexams-title", "Procesado del Lenguaje Natural - Examen Final", //Procesado del Lenguaje Natural - Examen Recuperación
                 "--rexams-course", "Grado en Ciencia de Datos",
                 "--shuffle-questions", "123",
                 "--shuffle-answers", "123",
-                "--log-level", "DEBUG"
+                "--log-level", "DEBUG",
+                "--rexams-date", "2025-05-27" //Fecha de recuperación: 25/06/2025
             ],
             "console": "integratedTerminal",
             "justMyCode": true
         },
         {
-            "name": "AutoTestIA: Split Questions Script",
+            "name": "Split Questions Script",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/output_formatter/split_markdown.py",
@@ -87,6 +88,52 @@
                 "--output-dir", "generated/splits", // Output directory
                 "--shuffle-questions", "123" // Shuffle seed
             ]
+        },
+        {
+            "name": "Correct R/Exams from PDF",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/autotestia/rexams/correct_exams.py",
+            "args": [
+                "--all-scans-pdf", "generated/splits/pln_2025_final.pdf",
+                "--student-info-csv", "generated/splits/pln_2025.csv",
+                "--solutions-rds", "generated/splits/final_rexams_pdf_output/exam.rds",
+                "--output-path", "generated/splits/final_rexams_corrected",
+                "--split-pages",
+                "--language", "es",
+                "--partial-eval",
+                "--negative-points", "-0.333333",
+                "--scale-mark-to", "10.0",
+                "--student-csv-id-col", "Número ID",
+                "--student-csv-reg-col", "DNI",
+                "--student-csv-name-col", "Nom",
+                "--student-csv-surname-col", "Cognoms",
+                "--student-csv-encoding", "UTF-8",
+                "--registration-format", "%08s",
+                "--python-rotate",
+                "--max-score", "30"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}"
+        },
+    {
+        "name": "Correct R/Exams (Manual CSV)",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/autotestia/rexams/correct_exams_manual.py",
+        "args": [
+            "--corrected-answers-csv", "generated/splits/pln_2025_gem.csv",
+            "--solutions-rds", "generated/splits/final_rexams_pdf_output/exam.rds",
+            "--output-path", "generated/splits/final_manual_corrected",
+            "--partial-eval",
+            "--negative-points", "-0.333333",
+            "--max-score", "30",
+            "--scale-mark-to", "10.0"
+        ],
+        "console": "integratedTerminal",
+        "justMyCode": true,
+        "cwd": "${workspaceFolder}"
         }
     ]
 } 
