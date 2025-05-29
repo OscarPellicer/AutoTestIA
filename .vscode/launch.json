@@ -111,7 +111,8 @@
                 "--student-csv-encoding", "UTF-8",
                 "--registration-format", "%08s",
                 "--python-rotate",
-                "--max-score", "30"
+                "--max-score", "30",
+                "--log-level", "DEBUG"
             ],
             "console": "integratedTerminal",
             "justMyCode": true,
