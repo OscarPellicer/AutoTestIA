@@ -112,7 +112,8 @@
                 "--registration-format", "%08s",
                 "--python-rotate",
                 "--max-score", "30",
-                "--log-level", "DEBUG"
+                "--log-level", "INFO",
+                "--void-questions-nicely", "14",
             ],
             "console": "integratedTerminal",
             "justMyCode": true,
