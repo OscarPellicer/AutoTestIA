@@ -31,13 +31,14 @@
             "program": "${workspaceFolder}/main.py",
             "args": [
                 // No positional input file argument
-                "-n", "10",
-                "-o", "generated/python_regex_questions.md",
+                "-n", "6",
+                "-o", "generated/python_regex_questions_2.md",
                 "--provider", "anthropic", // Or change to your preferred provider
                 "--generator-instructions", "Generate multiple-choice questions specifically about Python regular expressions using the 're' module. Focus on questions requiring either synthesis (writing a regex pattern based on a description) or analysis (determining what a given regex pattern matches or does). Cover common concepts like character classes, quantifiers, grouping, anchors, lookarounds, and standard 're' functions (e.g., search, match, findall, sub).",
                 "--use-llm-review",
                 "--reviewer-instructions", "Ensure questions accurately test Python regex synthesis or analysis as requested. Verify the correctness of regex patterns, expected matches, and explanations. Ensure distractors are plausible but incorrect applications or interpretations of regex concepts.",
-                "--language", "Spanish"
+                "--language", "Spanish",
+                "-f", "none", //"moodle_xml", "gift", "wooclap", "rexams", "none"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -62,14 +63,14 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
-                "--resume-from-md", "generated/splits/final.md", // Resume from this file
+                "--resume-from-md", "generated/splits/recuperacion.md", // Resume from this file
                 "-f", "rexams", // Output R/Exams format
                 "--rexams-title", "Procesado del Lenguaje Natural - Examen Final", //Procesado del Lenguaje Natural - Examen Recuperación
                 "--rexams-course", "Grado en Ciencia de Datos",
-                "--shuffle-questions", "123",
+                // "--shuffle-questions", "123",
                 "--shuffle-answers", "123",
                 "--log-level", "DEBUG",
-                "--rexams-date", "2025-05-27" //Fecha de recuperación: 25/06/2025
+                "--rexams-date", "2025-06-05" //Fecha de recuperación: 25/06/2025
             ],
             "console": "integratedTerminal",
             "justMyCode": true
