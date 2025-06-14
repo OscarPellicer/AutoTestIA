@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "AutoTestIA (File Input)",
+            "name": "AutoTestIA (PPTX Input)",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
@@ -19,6 +19,26 @@
                 "-f", "none", //"gift", "wooclap", "rexams"
                 "-o", "generated/tema5b_new.md",
                 "--generator-instructions", "Create questions about the specifics of LDA, LSA / LSI",
+                // "--log-level", "DEBUG",
+            ],
+            "console": "integratedTerminal", // Run in VS Code's integrated terminal
+            "justMyCode": true // Debug only user code by default
+        },
+        {
+            "name": "AutoTestIA (MD Input)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
+            "args": [
+                "C:/Users/Oscar/pptx2marp/outputs/Tema_5c_marp.md",
+                "-n", "10", //"2",
+                "--provider", "anthropic",
+                "--generator-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
+                "--reviewer-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
+                "--use-llm-review",
+                "-f", "none", //"gift", "wooclap", "rexams"
+                "-o", "generated/tema5c_marp.md",
+                //"--generator-instructions", "Create questions about the specifics of LDA, LSA / LSI",
                 // "--log-level", "DEBUG",
             ],
             "console": "integratedTerminal", // Run in VS Code's integrated terminal
@@ -63,7 +83,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
-                "--resume-from-md", "generated/splits/recuperacion.md", // Resume from this file
+                "--resume-from-md", "generated/splits/recuperacion_final.md", // Resume from this file
                 "-f", "rexams", // Output R/Exams format
                 "--rexams-title", "Procesado del Lenguaje Natural - Examen Final", //Procesado del Lenguaje Natural - Examen Recuperación
                 "--rexams-course", "Grado en Ciencia de Datos",
