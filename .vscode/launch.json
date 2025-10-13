@@ -13,8 +13,8 @@
                 "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2024-2025/2nd sem - Procesamiento del Lenguaje Natural/Tema 5b.pptx",
                 "-n", "4", //"2",
                 "--provider", "anthropic",
-                "--generator-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
-                "--reviewer-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
+                "--generator-model", "claude-sonnet-4-5", //"gpt-4o-mini",
+                "--reviewer-model", "claude-sonnet-4-5", //"gpt-4o-mini",
                 "--use-llm-review",
                 "-f", "none", //"gift", "wooclap", "rexams"
                 "-o", "generated/tema5b_new.md",
@@ -33,8 +33,8 @@
                 "C:/Users/Oscar/pptx2marp/outputs/Tema_5c_marp.md",
                 "-n", "10", //"2",
                 "--provider", "anthropic",
-                "--generator-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
-                "--reviewer-model", "claude-3-7-sonnet-latest", //"gpt-4o-mini",
+                "--generator-model", "claude-sonnet-4-5", //"gpt-4o-mini",
+                "--reviewer-model", "claude-sonnet-4-5", //"gpt-4o-mini",
                 "--use-llm-review",
                 "-f", "none", //"gift", "wooclap", "rexams"
                 "-o", "generated/tema5c_marp.md",
@@ -116,10 +116,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/autotestia/rexams/correct_exams.py",
             "args": [
-                "--all-scans-pdf", "generated/splits/recuperacion_rexams_corrected/20250605165231892.pdf",
+                "--all-scans-pdf", "generated/splits/recuperacion_final_rexams_corrected/20250625165542274.pdf",
                 "--student-info-csv", "generated/splits/pln_2025.csv",
-                "--solutions-rds", "generated/splits/recuperacion_rexams_pdf_output/exam.rds",
-                "--output-path", "generated/splits/recuperacion_rexams_corrected",
+                "--solutions-rds", "generated/splits/recuperacion_final_rexams_pdf_output/exam.rds",
+                "--output-path", "generated/splits/recuperacion_final_rexams_corrected",
                 "--language", "es",
                 "--partial-eval",
                 "--negative-points", "-0.333333",
@@ -134,7 +134,7 @@
                 "--python-split",
                 "--max-score", "30",
                 "--log-level", "INFO",
-                "--force-overwrite",
+                // "--force-overwrite",
                 "--python-bw-threshold", "170",
                 // "--void-questions-nicely", "14",
             ],
@@ -159,6 +159,31 @@
         "console": "integratedTerminal",
         "justMyCode": true,
         "cwd": "${workspaceFolder}"
-        }
+        },
+
+        // Exams from MIB
+        {
+            "name": "AutoTestIA (MD Input - MIB)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
+            "args": [
+                "C:\\Users\\Oscar\\My Drive (oscarj1994@gmail.com)\\9. DOCENCIA\\2025-2026\\1er sem - MIB - Sistemas informáticos y sistemas de información\\slides_2025\\redes.md",
+                "-n", "20",
+                "--provider", "openrouter",
+                "--generator-model", "google/gemini-2.5-flash", //"gpt-4o-mini",
+                "--reviewer-model", "google/gemini-2.5-flash", //"gpt-4o-mini",
+                "--use-llm-review",
+                "-f", "none", //"gift", "wooclap", "rexams"
+                "-o", "generated/mib/redes-gemini25flash.md",
+                "--language", "Spanish",
+                // "--generator-instructions", "Include some exercises, both for synthesis and analysis",
+                // "--generator-instructions", "Use the material only until the Azure section, as we did not cover Azure in class",
+                "--generator-instructions", "Include some exercises about subnetting and number system conversions",
+                // "--log-level", "DEBUG",
+            ],
+            "console": "integratedTerminal", // Run in VS Code's integrated terminal
+            "justMyCode": true // Debug only user code by default
+        },
     ]
 } 
