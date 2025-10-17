@@ -83,14 +83,15 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
-                "--resume-from-md", "generated/splits/recuperacion_final.md", // Resume from this file
+                "--resume-from-md", "generated/mib/redes-gemini25proflash-test.md", // Resume from this file
                 "-f", "rexams", // Output R/Exams format
-                "--rexams-title", "Procesado del Lenguaje Natural - Examen Final", //Procesado del Lenguaje Natural - Examen Recuperación
-                "--rexams-course", "Grado en Ciencia de Datos",
+                "--rexams-title", "Sistemas informáticos y sistemas de información - Examen Parcial", //Procesado del Lenguaje Natural - Examen Recuperación
+                "--rexams-course", "Máster en Ingeniería Biomédica",
                 // "--shuffle-questions", "123",
                 "--shuffle-answers", "123",
-                "--log-level", "DEBUG",
-                "--rexams-date", "2025-06-05" //Fecha de recuperación: 25/06/2025
+                // "--log-level", "DEBUG",
+                "--rexams-date", "2025-10-22", //Fecha de recuperación
+                "--evaluate-final",
             ],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -160,7 +161,6 @@
         "justMyCode": true,
         "cwd": "${workspaceFolder}"
         },
-
         // Exams from MIB
         {
             "name": "AutoTestIA (MD Input - MIB)",
@@ -169,18 +169,21 @@
             "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
             "args": [
                 "C:\\Users\\Oscar\\My Drive (oscarj1994@gmail.com)\\9. DOCENCIA\\2025-2026\\1er sem - MIB - Sistemas informáticos y sistemas de información\\slides_2025\\redes.md",
-                "-n", "20",
-                "--provider", "openrouter",
-                "--generator-model", "google/gemini-2.5-pro", //"gpt-4o-mini",
-                "--reviewer-model", "x-ai/grok-4-fast", //"gpt-4o-mini",
+                "-n", "4",
+                "--provider", "openrouter", //"ollama",
+                "--generator-model", "google/gemini-2.5-pro",
+                "--reviewer-model", "google/gemini-2.5-flash", 
+                "--evaluator-model", "google/gemini-2.5-flash",
                 "--use-llm-review",
                 "-f", "none", //"gift", "wooclap", "rexams"
-                "-o", "generated/mib/redes-test.md",
+                "-o", "generated/mib/redes-gemini25proflash-test.md",
                 "--language", "Spanish",
                 // "--generator-instructions", "Include some exercises, both for synthesis and analysis",
                 // "--generator-instructions", "Use the material only until the Azure section, as we did not cover Azure in class",
                 "--generator-instructions", "Include some exercises about subnetting and number system conversions",
                 // "--log-level", "DEBUG",
+                "--evaluate-initial",
+                "--evaluate-reviewed",
             ],
             "console": "integratedTerminal", // Run in VS Code's integrated terminal
             "justMyCode": true // Debug only user code by default
