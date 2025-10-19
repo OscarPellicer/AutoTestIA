@@ -100,14 +100,14 @@
             "name": "Split Questions Script",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/output_formatter/split_markdown.py",
+            "program": "${workspaceFolder}/autotestia/output_formatter/split_markdown.py",
             "console": "integratedTerminal",
             "justMyCode": true,
             "cwd": "${workspaceFolder}", // Run from project root
             "args": [
-                "generated/all.md", // Input MD file
-                "--splits", "0.5", "0.5", // Split proportions
-                "--output-dir", "generated/splits", // Output directory
+                "generated/mib/all.md", // Input MD file
+                "--splits", "20", "35", "-1", // Split proportions
+                "--output-dir", "generated/mib/splits", // Output directory
                 "--shuffle-questions", "123" // Shuffle seed
             ]
         },
@@ -168,19 +168,20 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
             "args": [
-                "C:\\Users\\Oscar\\My Drive (oscarj1994@gmail.com)\\9. DOCENCIA\\2025-2026\\1er sem - MIB - Sistemas informáticos y sistemas de información\\slides_2025\\redes.md",
-                "-n", "4",
-                "--provider", "openrouter", //"ollama",
+                "C:\\Users\\Oscar\\My Drive (oscarj1994@gmail.com)\\9. DOCENCIA\\2025-2026\\1er sem - MIB - Sistemas informáticos y sistemas de información\\slides_2025\\xml.md",
+                "-n", "20",
+                // "--provider", "ollama",
+                // "--provider", "openrouter",
                 "--generator-model", "google/gemini-2.5-pro",
                 "--reviewer-model", "google/gemini-2.5-flash", 
                 "--evaluator-model", "google/gemini-2.5-flash",
                 "--use-llm-review",
                 "-f", "none", //"gift", "wooclap", "rexams"
-                "-o", "generated/mib/redes-gemini25proflash-test.md",
+                "-o", "generated/mib/xml_gemini25proflash.md",
                 "--language", "Spanish",
-                // "--generator-instructions", "Include some exercises, both for synthesis and analysis",
+                "--generator-instructions", "Include some exercises, both for synthesis and analysis",
                 // "--generator-instructions", "Use the material only until the Azure section, as we did not cover Azure in class",
-                "--generator-instructions", "Include some exercises about subnetting and number system conversions",
+                // "--generator-instructions", "Include some exercises about subnetting and number system conversions",
                 // "--log-level", "DEBUG",
                 "--evaluate-initial",
                 "--evaluate-reviewed",
