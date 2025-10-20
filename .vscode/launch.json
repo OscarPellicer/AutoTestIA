@@ -83,15 +83,15 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
-                "--resume-from-md", "generated/mib/redes-gemini25proflash-test.md", // Resume from this file
+                "--resume-from-md", "generated/mib/splits/all_2.md", // Resume from this file
                 "-f", "rexams", // Output R/Exams format
-                "--rexams-title", "Sistemas informáticos y sistemas de información - Examen Parcial", //Procesado del Lenguaje Natural - Examen Recuperación
+                "--rexams-title", "Sistemas informáticos y sistemas de información - Examen Parcial",
                 "--rexams-course", "Máster en Ingeniería Biomédica",
                 // "--shuffle-questions", "123",
                 "--shuffle-answers", "123",
                 // "--log-level", "DEBUG",
-                "--rexams-date", "2025-10-22", //Fecha de recuperación
-                "--evaluate-final",
+                "--rexams-date", "2025-10-22", 
+                // "--evaluate-final",
             ],
             "console": "integratedTerminal",
             "justMyCode": true
