@@ -57,7 +57,7 @@
                 "--generator-instructions", "Generate multiple-choice questions specifically about Python regular expressions using the 're' module. Focus on questions requiring either synthesis (writing a regex pattern based on a description) or analysis (determining what a given regex pattern matches or does). Cover common concepts like character classes, quantifiers, grouping, anchors, lookarounds, and standard 're' functions (e.g., search, match, findall, sub).",
                 "--use-llm-review",
                 "--reviewer-instructions", "Ensure questions accurately test Python regex synthesis or analysis as requested. Verify the correctness of regex patterns, expected matches, and explanations. Ensure distractors are plausible but incorrect applications or interpretations of regex concepts.",
-                "--language", "Spanish",
+                "--exam-language", "Spanish",
                 "-f", "none", //"moodle_xml", "gift", "wooclap", "rexams", "none"
             ],
             "console": "integratedTerminal",
@@ -83,7 +83,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
-                "--resume-from-md", "generated/mib/splits/all_2.md", // Resume from this file
+                "--resume-from-md", "generated/mib/splits/all_2_evaluated-final.md", // Resume from this file
                 "-f", "rexams", // Output R/Exams format
                 "--rexams-title", "Sistemas informáticos y sistemas de información - Examen Parcial",
                 "--rexams-course", "Máster en Ingeniería Biomédica",
@@ -121,7 +121,7 @@
                 "--student-info-csv", "generated/splits/pln_2025.csv",
                 "--solutions-rds", "generated/splits/recuperacion_final_rexams_pdf_output/exam.rds",
                 "--output-path", "generated/splits/recuperacion_final_rexams_corrected",
-                "--language", "es",
+                "--exam-language", "es",
                 "--partial-eval",
                 "--negative-points", "-0.333333",
                 "--scale-mark-to", "10.0",
@@ -178,7 +178,7 @@
                 "--use-llm-review",
                 "-f", "none", //"gift", "wooclap", "rexams"
                 "-o", "generated/mib/xml_gemini25proflash.md",
-                "--language", "Spanish",
+                "--exam-language", "es",
                 "--generator-instructions", "Include some exercises, both for synthesis and analysis",
                 // "--generator-instructions", "Use the material only until the Azure section, as we did not cover Azure in class",
                 // "--generator-instructions", "Include some exercises about subnetting and number system conversions",
@@ -189,5 +189,26 @@
             "console": "integratedTerminal", // Run in VS Code's integrated terminal
             "justMyCode": true // Debug only user code by default
         },
-    ]
+        {
+            "name": "Resume from .md to pexams",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "--resume-from-md", "generated/mib/splits/all_2_evaluated-final.md", // Resume from this file
+                "-f", "pexams", // Output pexams format
+                "--exam-title", "Sistemas informáticos y sistemas de información - Examen Parcial",
+                "--exam-course", "Máster en Ingeniería Biomédica",
+                // "--shuffle-questions", "123",
+                "--shuffle-answers", "123",
+                "--log-level", "DEBUG",
+                "--exam-date", "2025-10-22", 
+                "--exam-models", "1",
+                // "--evaluate-final",
+                "--exam-language", "es",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+    ],
 } 
