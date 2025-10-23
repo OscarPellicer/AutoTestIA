@@ -216,14 +216,14 @@
             "name": "Pexams: Correct Simulated Scans",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/autotestia/pexams/main.py",
+            "module": "autotestia.pexams.main",
             "cwd": "${workspaceFolder}",
             "args": [
                 "correct",
                 "--input-path",
                 "generated/mib/splits/all_2_evaluated-final_pexams_output/simulated_scans",
                 "--solutions-json",
-                "generated/mib/splits/all_2_evaluated-final_pexams_output/pexams_questions.json",
+                "generated/mib/splits/all_2_evaluated-final_pexams_output/exam_model_1_questions.json",
                 "--output-dir",
                 "generated/mib/splits/all_2_evaluated-final_pexams_output/correction_results"
             ],
