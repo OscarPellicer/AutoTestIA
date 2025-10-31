@@ -178,7 +178,7 @@
                 "--evaluator-model", "google/gemini-2.5-flash",
                 "--use-llm-review",
                 "-f", "none", //"gift", "wooclap", "rexams"
-                "-o", "generated/mib/xml_gemini25proflash.md",
+                "-o", "generated/mib/xml_gemini25proflash_latest.md",
                 "--exam-language", "es",
                 "--generator-instructions", "Include some exercises, both for synthesis and analysis",
                 // "--generator-instructions", "Use the material only until the Azure section, as we did not cover Azure in class",
@@ -196,7 +196,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
-                "--resume-from-md", "generated/mib/splits/all_2_evaluated-final.md", // Resume from this file
+                "--resume-from-md", "generated/mib/xml_gemini25proflash_latest.md", // Resume from this file
                 "-f", "pexams", // Output pexams format
                 "--exam-title", "Sistemas informáticos y sistemas de información - Examen Parcial",
                 "--exam-course", "Máster en Ingeniería Biomédica",
