@@ -1,126 +1,213 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "AutoTestIA (PPTX Input)",
+            "name": "autotestia test",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
-            "args": [
-                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2024-2025/2nd sem - Procesamiento del Lenguaje Natural/Tema 5b.pptx",
-                "-n", "4", //"2",
-                "--provider", "anthropic",
-                "--generator-model", "claude-sonnet-4-5", //"gpt-4o-mini",
-                "--reviewer-model", "claude-sonnet-4-5", //"gpt-4o-mini",
-                "--use-llm-review",
-                "-f", "none", //"gift", "wooclap", "rexams"
-                "-o", "generated/tema5b_new.md",
-                "--generator-instructions", "Create questions about the specifics of LDA, LSA / LSI",
-                // "--log-level", "DEBUG",
-            ],
-            "console": "integratedTerminal", // Run in VS Code's integrated terminal
-            "justMyCode": true // Debug only user code by default
+            "program": "${workspaceFolder}/main.py",
+            "args": ["test"],
+            "console": "integratedTerminal",
+            "justMyCode": true
         },
         {
-            "name": "AutoTestIA (MD Input)",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
-            "args": [
-                "C:/Users/Oscar/pptx2marp/outputs/Tema_5c_marp.md",
-                "-n", "10", //"2",
-                "--provider", "anthropic",
-                "--generator-model", "claude-sonnet-4-5", //"gpt-4o-mini",
-                "--reviewer-model", "claude-sonnet-4-5", //"gpt-4o-mini",
-                "--use-llm-review",
-                "-f", "none", //"gift", "wooclap", "rexams"
-                "-o", "generated/tema5c_marp.md",
-                //"--generator-instructions", "Create questions about the specifics of LDA, LSA / LSI",
-                // "--log-level", "DEBUG",
-            ],
-            "console": "integratedTerminal", // Run in VS Code's integrated terminal
-            "justMyCode": true // Debug only user code by default
-        },
-        {
-            "name": "Generate Regex (Instructions)",
+            "name": "autotestia generate from pptx",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
-                // No positional input file argument
-                "-n", "6",
-                "-o", "generated/python_regex_questions_2.md",
-                "--provider", "anthropic", // Or change to your preferred provider
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2024-2025/2nd sem - Procesamiento del Lenguaje Natural/Tema 5b.pptx",
+                "-o", "generated/tema5b_new.md",
+                "-n", "4",
+                "--provider", "anthropic",
+                "--generator-model", "claude-sonnet-4-5",
+                "--reviewer-model", "claude-sonnet-4-5",
+                "--evaluator-model", "claude-sonnet-4-5",
+                "--evaluate-initial",
+                "--evaluate-reviewed",
+                "--use-llm-review",
+                "--generator-instructions", "Create questions about the specifics of LDA, LSA / LSI",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia generate from instructions",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
                 "--generator-instructions", "Generate multiple-choice questions specifically about Python regular expressions using the 're' module. Focus on questions requiring either synthesis (writing a regex pattern based on a description) or analysis (determining what a given regex pattern matches or does). Cover common concepts like character classes, quantifiers, grouping, anchors, lookarounds, and standard 're' functions (e.g., search, match, findall, sub).",
+                "-n", "6",
+                "--output-dir", "generated/python_regex_questions_2",
+                "--provider", "anthropic",
                 "--use-llm-review",
                 "--reviewer-instructions", "Ensure questions accurately test Python regex synthesis or analysis as requested. Verify the correctness of regex patterns, expected matches, and explanations. Ensure distractors are plausible but incorrect applications or interpretations of regex concepts.",
-                "--exam-language", "Spanish",
-                "-f", "none", //"moodle_xml", "gift", "wooclap", "rexams", "none"
+                "--language", "Spanish",
             ],
             "console": "integratedTerminal",
             "justMyCode": true
         },
         {
-            "name": "Resume from .md to Wooclap",
+            "name": "autotestia generate from md",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
-                "--resume-from-md", "generated/all_subset.md", // Resume from this file
-                "-f", "wooclap", // Output Wooclap format
-                "--shuffle-questions", "123",
-                "--shuffle-answers", "123",
+                "generate",
+                "C:\\Users\\Oscar\\My Drive (oscarj1994@gmail.com)\\9. DOCENCIA\\2025-2026\\1er sem - MIB - Sistemas informáticos y sistemas de información\\slides_2025\\xml.md",
+                "-o", "generated/mib/xml_gemini25proflash_latest.md",
+                "-n", "4",
+                "--generator-model", "google/gemini-2.5-pro",
+                "--reviewer-model", "google/gemini-2.5-flash", 
+                "--evaluator-model", "google/gemini-2.5-flash",
+                "--use-llm-review",
+                "--language", "es",
+                "--generator-instructions", "Include some exercises, both for synthesis and analysis",
+                "--evaluate-initial",
+                "--evaluate-reviewed",
             ],
             "console": "integratedTerminal",
             "justMyCode": true
         },
         {
-            "name": "Resume from .md to R/Exams",
+            "name": "autotestia split",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
-            "args": [
-                "--resume-from-md", "generated/mib/splits/all_2_evaluated-final.md", // Resume from this file
-                "-f", "rexams", // Output R/Exams format
-                "--exam-title", "Sistemas informáticos y sistemas de información - Examen Parcial",
-                "--exam-course", "Máster en Ingeniería Biomédica",
-                // "--shuffle-questions", "123",
-                "--shuffle-answers", "123",
-                // "--log-level", "DEBUG",
-                "--exam-date", "2025-10-22", 
-                // "--evaluate-final",
-            ],
-            "console": "integratedTerminal",
-            "justMyCode": true
-        },
-        {
-            "name": "Split Questions Script",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "autotestia.output_formatter.split_markdown",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "cwd": "${workspaceFolder}", // Run from project root
+            "cwd": "${workspaceFolder}",
             "args": [
-                "generated/mib/all.md", // Input MD file
-                "--splits", "20", "35", "-1", // Split proportions
-                "--output-dir", "generated/mib/splits", // Output directory
-                "--shuffle-questions", "123" // Shuffle seed
+                "split",
+                "generated/mib/xml_gemini25proflash_latest.md",
+                "--splits", "5", "5", "-1",
+                "--output-dir", "generated/mib/",
+                "--shuffle", "123",
+                "--log-level", "DEBUG"
             ]
         },
         {
-            "name": "Correct R/Exams from PDF",
+            "name": "autotestia merge",
             "type": "debugpy",
             "request": "launch",
-            "module": "autotestia.rexams.correct_exams",
+            "program": "${workspaceFolder}/main.py",
+            "args": [   
+                "merge",
+                "generated/mib/xml_gemini25proflash_latest_1.md",
+                "generated/mib/xml_gemini25proflash_latest_2.md",
+                "generated/mib/xml_gemini25proflash_latest_3.md",
+                "-o", "generated/mib/xml_gemini25proflash_latest_all.md",
+                "--log-level", "DEBUG"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia shuffle",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
             "args": [
-                "--all-scans-pdf", "./generated/mib/splits/all_2_evaluated-final_rexams_pdf_output/20251022182231907.pdf",
-                "--student-info-csv", "generated/mib/splits/all_2_evaluated-final_rexams_pdf_output/data.csv",
-                "--solutions-rds", "generated/mib/splits/all_2_evaluated-final_rexams_pdf_output/exam.rds",
-                "--output-path", "generated/mib/splits/all_2_evaluated-final_rexams_corrected",
+                "shuffle",
+                "generated/mib/xml_gemini25proflash_latest_all.md",
+                "--seed", "42",
+                "--yes",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia export to Wooclap",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "export",
+                "wooclap",
+                "generated/mib/xml_gemini25proflash_latest_all.md",
+                "--shuffle-questions", "123",
+                "--shuffle-answers", "123",
+                "--evaluate-final"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia export to R/Exams",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "export",
+                "rexams",
+                "generated/mib/xml_gemini25proflash_latest.md",
+                "--exam-title", "Sistemas informáticos y sistemas de información - Examen Parcial",
+                "--exam-course", "Máster en Ingeniería Biomédica",
+                "--shuffle-answers", "123",
+                "--exam-date", "2025-10-22",
+                "--evaluate-final",
+                "--log-level", "DEBUG"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia export to pexams",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "export",
+                "pexams",
+                "generated/mib/xml_gemini25proflash_latest.md",
+                "--exam-title", "Sistemas informáticos y sistemas de información - Examen Parcial",
+                "--exam-course", "Máster en Ingeniería Biomédica",
+                "--shuffle-answers", "123",
+                "--exam-date", "2025-10-22",
+                "--exam-models", "1",
+                "--exam-font-size", "10pt",
+                "--exam-language", "es",
+                "--exam-generate-fakes", "1",
+                "--exam-generate-references",
+                "--log-level", "DEBUG"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia correct pexams",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "correct",
+                "pexams",
+                "--input-path",
+                "generated/mib/xml_gemini25proflash_latest_all_pexams_output/simulated_scans",
+                "--exam-dir",
+                "generated/mib/xml_gemini25proflash_latest_all_pexams_output",
+                "--output-dir",
+                "generated/mib/xml_gemini25proflash_latest_all_pexams_output/correction_results",
+                "--log-level", "DEBUG"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia correct rexams",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "correct", "rexams",
+                "--all-scans-pdf", "./generated/mib/xml_gemini25proflash_latest_all_rexams_pdf_output/20251022182231907.pdf",
+                "--student-info-csv", "generated/mib/xml_gemini25proflash_latest_all_rexams_pdf_output/data.csv",
+                "--solutions-rds", "generated/mib/xml_gemini25proflash_latest_all_rexams_pdf_output/exam.rds",
+                "--output-path", "generated/mib/xml_gemini25proflash_latest_all_rexams_corrected",
                 "--exam-language", "es",
                 "--partial-eval",
                 "--negative-points", "-0.333333",
@@ -131,106 +218,16 @@
                 "--student-csv-surname-col", "Cognom",
                 "--student-csv-encoding", "UTF-8",
                 "--registration-format", "%08s",
-                "--python-rotate",
-                "--python-split",
+                "--python-rotate-control",
+                "--split-pages-python-control",
                 "--max-score", "32",
                 "--log-level", "INFO",
-                // "--force-overwrite",
                 "--python-bw-threshold", "100",
-                // "--void-questions-nicely", "14",
-                // "--log-level", "DEBUG",
+                "--void-questions-nicely", "14",
             ],
             "console": "integratedTerminal",
             "justMyCode": true,
             "cwd": "${workspaceFolder}"
         },
-    {
-        "name": "Correct R/Exams (Manual CSV)",
-        "type": "debugpy",
-        "request": "launch",
-        "program": "${workspaceFolder}/autotestia/rexams/correct_exams_manual.py",
-        "args": [
-            "--corrected-answers-csv", "generated/splits/pln_2025_gem.csv",
-            "--solutions-rds", "generated/splits/final_rexams_pdf_output/exam.rds",
-            "--output-path", "generated/splits/final_manual_corrected",
-            "--partial-eval",
-            "--negative-points", "-0.333333",
-            "--max-score", "32",
-            "--scale-mark-to", "10.0"
-        ],
-        "console": "integratedTerminal",
-        "justMyCode": true,
-        "cwd": "${workspaceFolder}"
-        },
-        // Exams from MIB
-        {
-            "name": "AutoTestIA (MD Input - MIB)",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/main.py", // Assumes main.py is in the workspace root
-            "args": [
-                "C:\\Users\\Oscar\\My Drive (oscarj1994@gmail.com)\\9. DOCENCIA\\2025-2026\\1er sem - MIB - Sistemas informáticos y sistemas de información\\slides_2025\\xml.md",
-                "-n", "20",
-                // "--provider", "ollama",
-                // "--provider", "openrouter",
-                "--generator-model", "google/gemini-2.5-pro",
-                "--reviewer-model", "google/gemini-2.5-flash", 
-                "--evaluator-model", "google/gemini-2.5-flash",
-                "--use-llm-review",
-                "-f", "none", //"gift", "wooclap", "rexams"
-                "-o", "generated/mib/xml_gemini25proflash_latest.md",
-                "--exam-language", "es",
-                "--generator-instructions", "Include some exercises, both for synthesis and analysis",
-                // "--generator-instructions", "Use the material only until the Azure section, as we did not cover Azure in class",
-                // "--generator-instructions", "Include some exercises about subnetting and number system conversions",
-                // "--log-level", "DEBUG",
-                "--evaluate-initial",
-                "--evaluate-reviewed",
-            ],
-            "console": "integratedTerminal", // Run in VS Code's integrated terminal
-            "justMyCode": true // Debug only user code by default
-        },
-        {
-            "name": "Resume from .md to pexams",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/main.py",
-            "args": [
-                "--resume-from-md", "generated/mib/xml_gemini25proflash_latest.md", // Resume from this file
-                "-f", "pexams", // Output pexams format
-                "--exam-title", "Sistemas informáticos y sistemas de información - Examen Parcial",
-                "--exam-course", "Máster en Ingeniería Biomédica",
-                // "--shuffle-questions", "123",
-                "--shuffle-answers", "123",
-                "--exam-date", "2025-10-22", 
-                "--exam-models", "1",
-                // "--evaluate-final",
-                "--exam-font-size", "10pt",
-                "--exam-language", "es",
-                "--exam-generate-fakes", "1",
-                "--exam-generate-references",
-                "--log-level", "DEBUG",
-            ],
-            "console": "integratedTerminal",
-            "justMyCode": true
-        },
-        {
-            "name": "Pexams: Correct Simulated Scans",
-            "type": "python",
-            "request": "launch",
-            "module": "autotestia.correct_pexams",
-            "cwd": "${workspaceFolder}",
-            "args": [
-                "--input-path",
-                "generated/mib/splits/all_2_evaluated-final_pexams_output/simulated_scans",
-                "--exam-dir",
-                "generated/mib/splits/all_2_evaluated-final_pexams_output",
-                "--output-dir",
-                "generated/mib/splits/all_2_evaluated-final_pexams_output/correction_results",
-                "--log-level", "DEBUG"
-            ],
-            "console": "integratedTerminal",
-            "justMyCode": true
-        }
     ]
 } 
