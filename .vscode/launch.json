@@ -163,6 +163,7 @@
                 "export",
                 "pexams",
                 "generated/mib/xml_gemini25proflash_latest.md",
+                // "generated_test/merged_questions.md",
                 "--exam-title", "Sistemas informáticos y sistemas de información - Examen Parcial",
                 "--exam-course", "Máster en Ingeniería Biomédica",
                 "--shuffle-answers", "123",
@@ -172,6 +173,8 @@
                 "--exam-language", "es",
                 "--exam-generate-fakes", "1",
                 "--exam-generate-references",
+                "--exam-columns", "2",
+                "--max-image-height", "300",
                 "--log-level", "DEBUG"
             ],
             "console": "integratedTerminal",
