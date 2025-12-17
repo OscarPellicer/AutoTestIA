@@ -182,19 +182,15 @@
         },
         {
             "name": "autotestia correct pexams",
-            "type": "debugpy",
+            "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/main.py",
+            "module": "pexams.main",
             "cwd": "${workspaceFolder}",
             "args": [
-                "correct",
-                "pexams",
-                "--input-path",
-                "generated/mib/xml_gemini25proflash_latest_all_pexams_output/simulated_scans",
-                "--exam-dir",
-                "generated/mib/xml_gemini25proflash_latest_all_pexams_output",
-                "--output-dir",
-                "generated/mib/xml_gemini25proflash_latest_all_pexams_output/correction_results",
+                "correct", 
+                "--input-path", "generated/mib/xml_gemini25proflash_latest_all_pexams_output/simulated_scans",
+                "--exam-dir", "generated/mib/xml_gemini25proflash_latest_all_pexams_output",
+                "--output-dir", "generated/mib/xml_gemini25proflash_latest_all_pexams_output/simulated_scans/correction_results",
                 "--log-level", "DEBUG"
             ],
             "console": "integratedTerminal",
@@ -231,6 +227,151 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "autotestia generate partial2 python",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/1er sem - MIB - Sistemas informáticos y sistemas de información/ultimas_2_sesiones/ProgramaciónPython_avanzado.pdf",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/1er sem - MIB - Sistemas informáticos y sistemas de información/ultimas_2_sesiones/ProgramaciónPython_basico.pdf",
+                "-o", "generated/mib/partial2/python.md",
+                "-n", "25",
+                "--language", "es",
+                "--use-llm-review",
+                "--evaluate-initial",
+                "--evaluate-reviewed"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia generate partial2 medical",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/1er sem - MIB - Sistemas informáticos y sistemas de información/ultimas_2_sesiones/Tema4_SistemasAyudaDecisiónMédica.pdf",
+                "-o", "generated/mib/partial2/medical.md",
+                "-n", "15",
+                "--language", "es",
+                "--use-llm-review",
+                "--evaluate-initial",
+                "--evaluate-reviewed"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia generate partial2 heart",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/1er sem - MIB - Sistemas informáticos y sistemas de información/ultimas_2_sesiones/heart_disease_exploration_and_prediction_simplificado_oscar.ipynb",
+                "-o", "generated/mib/partial2/heart.md",
+                "-n", "10",
+                "--language", "es",
+                "--use-llm-review",
+                "--evaluate-initial",
+                "--evaluate-reviewed"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia generate partial2 images",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "-i",
+                "generated/mib/partial2/cm.png",
+                "generated/mib/partial2/lr.png",
+                "generated/mib/partial2/roc.png",
+                "generated/mib/partial2/hyperparam.png",
+                "-o", "generated/mib/partial2/images.md",
+                "--num-questions-per-image", "2",
+                "--language", "es",
+                "--use-llm-review",
+                "--evaluate-initial",
+                "--evaluate-reviewed"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia merge partial2",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "merge",
+                "generated/mib/partial2/python.md",
+                "generated/mib/partial2/medical.md",
+                "generated/mib/partial2/heart.md",
+                "generated/mib/partial2/images.md",
+                "-o", "generated/mib/partial2/all.md",
+                "--log-level", "DEBUG"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "autotestia export to pexams partial2",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "export",
+                "pexams",
+                "generated/mib/partial2/all.md",
+                // "generated_test/merged_questions.md",
+                "--exam-title", "Sistemas informáticos y sistemas de información - Examen Parcial II",
+                "--exam-course", "Máster en Ingeniería Biomédica",
+                "--shuffle-answers", "123",
+                "--exam-date", "2025-12-19",
+                "--exam-models", "4",
+                "--exam-font-size", "9pt",
+                "--exam-language", "es",
+                "--exam-generate-fakes", "1",
+                "--exam-generate-references",
+                "--exam-columns", "2",
+                "--max-image-height", "270",
+                "--exam-total-students", "22",
+                "--exam-extra-model-templates", "2",
+                "--exam-generate-fakes", "1",
+                "--exam-generate-references",
+                // "--log-level", "DEBUG",
+                "--keep-html",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "pexams correct partial2",
+            "type": "python",
+            "request": "launch",
+            "module": "pexams.main",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "correct",
+                "--input-path", "generated/mib/partial2/all_pexams_output/simulated_scans",
+                "--exam-dir", "generated/mib/partial2/all_pexams_output",
+                "--output-dir", "generated/mib/partial2/all_pexams_output/simulated_scans/correction_results",
+                "--input-csv", "generated/mib/partial2/all_pexams_output/grades.csv",
+                "--id-column", "ID estudiante",
+                "--mark-column", "#Parcial II [10]",
+                "--fuzzy-id-match", "80",
+                // "--log-level", "DEBUG"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
         },
     ]
 } 
