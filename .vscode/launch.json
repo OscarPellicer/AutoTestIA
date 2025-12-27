@@ -371,7 +371,7 @@
                 "--simplify-csv",
                 "--fuzzy-id-match", "70",
                 // "--log-level", "DEBUG"
-                "--penalty", "0.333333",
+                "--penalty", "0.25",
                 "--input-encoding", "latin1",
                 "--input-sep", ";",
                 "--output-decimal-sep", ",",
