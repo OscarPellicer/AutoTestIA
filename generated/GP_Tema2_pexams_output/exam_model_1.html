@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gestió de projectes - Examen Parcial 2 - Model 1</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* pexams default CSS */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #333;
+    -webkit-print-color-adjust: exact; /* Ensures colors and backgrounds are printed */
+}
+
+@page {
+    size: A4;
+    margin: 15mm;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    color: black;
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 14pt; }
+h2 { font-size: 12pt; }
+
+.exam-title { font-size: 14pt; margin-bottom: 2mm; }
+.exam-subtitle { font-size: 12pt; margin-bottom: 2mm; }
+
+/* --- PAGE CONTAINERS --- */
+.page-container {
+    width: 100%;
+    height: 100%;
+    page-break-after: always; /* Ensure each container is a new page */
+}
+
+/* --- ANSWER SHEET --- */
+.answer-sheet-page {
+    position: relative; /* Needed for absolute positioning of children */
+    width: 180mm;
+    height: 267mm; /* A4 height minus margins */
+}
+
+.exam-info, .student-name-label, .student-id-label, .student-signature-label {
+    /* Shared styles for header text elements */
+    font-size: 10pt;
+    color: #333;
+}
+.exam-info span {
+    margin-right: 5mm;
+    display: block;
+}
+
+.student-info, .student-name, .student-id-grid {
+    /* No longer needed for layout */
+    all: unset;
+}
+
+.id-box, .student-name-box, .student-signature-box {
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.model-id-box {
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.model-id-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+.instructions-box {
+    border: 1px solid #000000;
+    padding: 2mm;
+    font-size: 7pt;
+    width: 70mm;
+    border-radius: 2px;
+}
+.instructions-box h4 {
+    margin-top: 0;
+    margin-bottom: 1mm;
+    font-size: 8pt;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 1mm;
+}
+.instructions-box ul {
+    margin: 0;
+    padding-left: 3mm;
+    list-style-position: outside;
+}
+.instructions-box li {
+    margin-bottom: 1.5mm;
+}
+.instruction-example-container {
+    list-style-type: none;
+}
+.instruction-example {
+    display: flex;
+    align-items: center;
+    margin-top: 1mm;
+}
+.instruction-example span {
+    margin-right: 2mm;
+}
+.instruction-example img {
+    /* Size is now set in the SVG itself */
+}
+
+.example-box {
+    border: 1px solid black;
+    width: 5mm;
+    height: 2mm;
+    border-radius: 2px;
+    position: relative; /* For positioning the line */
+}
+
+.example-box.correct {
+    background-color: black;
+}
+
+.example-box.incorrect .incorrect-line {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background-color: black;
+    transform: translateY(-50%);
+}
+
+.answer-group, .answer-row, .options-container {
+    /* These are no longer used for positioning */
+    all: unset;
+}
+
+.answer-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+.header-q-num, .question-number {
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: left;
+    line-height: 1; /* Reset line height */
+}
+
+.header-option {
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.option-box {
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+/* --- FIDUCIAL MARKERS --- */
+.fiducial {
+    position: absolute;
+    width: 8mm;
+    height: 8mm;
+}
+.fiducial::before, .fiducial::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+}
+.fiducial::before {
+    left: 50%;
+    width: 1mm;
+    height: 100%;
+    transform: translateX(-50%);
+}
+.fiducial::after {
+    top: 50%;
+    height: 1mm;
+    width: 100%;
+    transform: translateY(-50%);
+}
+.fiducial.top-left { top: 0; left: 0; }
+.fiducial.top-right { top: 0; right: 0; }
+.fiducial.bottom-left { bottom: 5mm; left: 0; }
+.fiducial.bottom-right { bottom: 5mm; right: 0; }
+
+/* --- QUESTION LAYOUT --- */
+.questions-container {
+    width: 100%;
+    height: 100%;
+}
+
+.questions-container.two-columns {
+    column-count: 2;
+    column-gap: 15mm;
+}
+
+.questions-container.three-columns {
+    column-count: 3;
+    column-gap: 10mm;
+}
+
+.question-wrapper {
+    break-inside: avoid-column;
+    padding-bottom: 1em;
+}
+
+.question-text {
+    margin-bottom: 0.5em;
+}
+
+.options-block {
+    padding-left: 20px;
+}
+
+.option-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.2em;
+}
+
+.option-label {
+    display: inline-block;
+    min-width: 25px;
+    flex-shrink: 0;
+}
+
+.option-text p {
+    margin: 0;
+    display: inline;
+}
+
+.question-wrapper ul {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    padding-left: 20px;
+    list-style-position: inside;
+}
+
+.question-wrapper ul li {
+    margin-bottom: 0.1em;
+}
+
+.question-wrapper ul li p {
+    margin: 0;
+    display: inline; /* To keep the text next to the list marker */
+}
+
+/* --- UTILITIES --- */
+img {
+    max-width: 100%;
+    height: auto;
+}
+img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+}
+img[alt~="left"] {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+}
+img[alt~="right"] {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+}
+
+    </style>
+    <style>
+        body { font-size: 11pt; }
+    </style>
+</head>
+<body>
+    
+<div class="page-container answer-sheet-page">
+    <div class="fiducial top-left"></div>
+    <div class="fiducial top-right"></div>
+    <div class="fiducial bottom-left"></div>
+    <div class="fiducial bottom-right"></div>
+    <h1 class="exam-title" style="position: absolute; left: 5mm; top: 5mm;">Gestió de projectes - Examen Parcial 2</h1>
+<div class="model-id-box" style="position: absolute; left: 5mm; top: 32mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="model-id-text" style="position: absolute; left: 5mm; top: 32mm; width: 4.5mm; height: 6.0mm;">1</div>
+<div class="exam-info" style="position: absolute; left: 5mm; top: 20mm;"><span>Course: Enginyeria de telecomunicacions</span>
+<span>Date: 2025-11-29</span></div>
+<div class="student-name-label" style="position: absolute; left: 5mm; top: 60mm;"><b>Student name</b></div>
+<div class="student-name-box" style="position: absolute; left: 5mm; top: 67mm; width: 75mm; height: 12mm;"></div>
+<div class="student-id-label" style="position: absolute; left: 5mm; top: 40mm;"><b>Student ID</b></div>
+<div class="id-box" style="position: absolute; left: 5.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 11.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 17.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 23.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 29.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 35.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 41.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 47.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 53.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 59.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="student-signature-label" style="position: absolute; left: 90mm; top: 60mm;"><b>Signature</b></div>
+<div class="student-signature-box" style="position: absolute; left: 90mm; top: 67mm; width: 75mm; height: 12mm;"></div>
+<div style="position: absolute; left: 90mm; top: 20mm;">
+    <div class="instructions-box">
+        <h4>Instructions</h4>
+        <ul>
+            <li><b>ID:</b> Use one character (A-Z, 0-9) per box.</li>
+            <li><b>Answers:</b> Completely fill the box of your chosen answer.</li>
+            <li class="instruction-example-container">
+                <div class="instruction-example">
+                    <span>Correct:</span>
+                    <div class="example-box correct"></div>
+                </div>
+                <div class="instruction-example">
+                    <span>Incorrect:</span>
+                    <div class="example-box incorrect"><div class="incorrect-line"></div></div>
+                </div>
+            </li>
+            <li><b>Corrections:</b> Use correction fluid to erase mistakes.</li>
+        </ul>
+    </div>
+    </div>
+<div class="header-option" style="position: absolute; left: 15.0mm; top: 85.0mm; width: 5.0mm; height: 4.0mm;">A</div>
+<div class="header-option" style="position: absolute; left: 22.0mm; top: 85.0mm; width: 5.0mm; height: 4.0mm;">B</div>
+<div class="header-option" style="position: absolute; left: 29.0mm; top: 85.0mm; width: 5.0mm; height: 4.0mm;">C</div>
+<div class="header-option" style="position: absolute; left: 36.0mm; top: 85.0mm; width: 5.0mm; height: 4.0mm;">D</div>
+<div class="header-option" style="position: absolute; left: 15.0mm; top: 117.0mm; width: 5.0mm; height: 4.0mm;">A</div>
+<div class="header-option" style="position: absolute; left: 22.0mm; top: 117.0mm; width: 5.0mm; height: 4.0mm;">B</div>
+<div class="header-option" style="position: absolute; left: 29.0mm; top: 117.0mm; width: 5.0mm; height: 4.0mm;">C</div>
+<div class="header-option" style="position: absolute; left: 36.0mm; top: 117.0mm; width: 5.0mm; height: 4.0mm;">D</div>
+<div class="header-option" style="position: absolute; left: 15.0mm; top: 149.0mm; width: 5.0mm; height: 4.0mm;">A</div>
+<div class="header-option" style="position: absolute; left: 22.0mm; top: 149.0mm; width: 5.0mm; height: 4.0mm;">B</div>
+<div class="header-option" style="position: absolute; left: 29.0mm; top: 149.0mm; width: 5.0mm; height: 4.0mm;">C</div>
+<div class="header-option" style="position: absolute; left: 36.0mm; top: 149.0mm; width: 5.0mm; height: 4.0mm;">D</div>
+<div class="header-option" style="position: absolute; left: 15.0mm; top: 181.0mm; width: 5.0mm; height: 4.0mm;">A</div>
+<div class="header-option" style="position: absolute; left: 22.0mm; top: 181.0mm; width: 5.0mm; height: 4.0mm;">B</div>
+<div class="header-option" style="position: absolute; left: 29.0mm; top: 181.0mm; width: 5.0mm; height: 4.0mm;">C</div>
+<div class="header-option" style="position: absolute; left: 36.0mm; top: 181.0mm; width: 5.0mm; height: 4.0mm;">D</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 91.0mm; width: 10.0mm; height: 2.0mm;">1</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 96.0mm; width: 10.0mm; height: 2.0mm;">2</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 101.0mm; width: 10.0mm; height: 2.0mm;">3</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 106.0mm; width: 10.0mm; height: 2.0mm;">4</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 111.0mm; width: 10.0mm; height: 2.0mm;">5</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 123.0mm; width: 10.0mm; height: 2.0mm;">6</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 128.0mm; width: 10.0mm; height: 2.0mm;">7</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 133.0mm; width: 10.0mm; height: 2.0mm;">8</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 138.0mm; width: 10.0mm; height: 2.0mm;">9</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 143.0mm; width: 10.0mm; height: 2.0mm;">10</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 155.0mm; width: 10.0mm; height: 2.0mm;">11</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 160.0mm; width: 10.0mm; height: 2.0mm;">12</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 165.0mm; width: 10.0mm; height: 2.0mm;">13</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 170.0mm; width: 10.0mm; height: 2.0mm;">14</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 175.0mm; width: 10.0mm; height: 2.0mm;">15</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 187.0mm; width: 10.0mm; height: 2.0mm;">16</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 192.0mm; width: 10.0mm; height: 2.0mm;">17</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 197.0mm; width: 10.0mm; height: 2.0mm;">18</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 202.0mm; width: 10.0mm; height: 2.0mm;">19</div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 91.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 91.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 91.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 91.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 96.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 96.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 96.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 96.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 101.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 101.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 101.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 101.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 106.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 106.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 106.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 106.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 111.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 111.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 111.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 111.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 123.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 123.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 123.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 123.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 128.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 128.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 128.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 128.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 133.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 133.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 133.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 133.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 138.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 138.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 138.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 138.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 143.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 143.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 143.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 143.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 155.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 155.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 155.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 155.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 160.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 160.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 160.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 160.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 165.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 165.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 165.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 165.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 170.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 170.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 170.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 170.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 175.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 175.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 175.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 175.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 187.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 187.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 187.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 187.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 192.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 192.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 192.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 192.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 197.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 197.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 197.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 197.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 202.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 202.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 202.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 202.0mm; width: 5.0mm; height: 2.0mm;"></div>
+</div>
+
+    <div class="page-container" style="page-break-after: always;"></div>
+    <div class="page-container questions-container ">
+        <div class="question-wrapper">
+
+<div class="question-text"><b>1.</b> Què és la Taxa Interna de Rendibilitat (TIR)?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Una mesura de la taxa d'inflació esperada que s'aplica anualment a un projecte d'inversió</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">El rati que mesura el benefici net en relació amb el cost inicial total de la inversió</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">La suma total de tots els fluxos de caixa projectats sense aplicar cap actualització</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">El valor de la taxa de descompte o interès que fa que el Valor Actual Net (VAN) siga exactament zero</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>2.</b> Com es defineix la folgança (<span class="arithmatex">\(H\)</span>) d'una activitat en un diagrama de GANTT?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text"><span class="arithmatex">\(H = ES - LS\)</span></span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text"><span class="arithmatex">\(H = EF - ES\)</span> o bé <span class="arithmatex">\(H = EE - SS\)</span></span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text"><span class="arithmatex">\(H = LF + LS\)</span></span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text"><span class="arithmatex">\(H = LF - EF\)</span> o bé <span class="arithmatex">\(H = LS - ES\)</span></span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>3.</b> Què implica una bona planificació de recursos segons les tècniques d'anivellament?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Que el valor eficaç (RMS) dels recursos sigui el menor possible i s'acosti al valor mitjà (DC)</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Que s'assignin gran part dels recursos al principi del projecte per accelerar fases</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Que el valor eficaç (RMS) sigui màxim per assegurar una elevada disponibilitat</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Que el camí crític es redueixi significativament independentment de la càrrega de treball</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>4.</b> Si al calcular el Valor Actual Net (VAN) d'un projecte s'obté un valor superior a 0, quina és la conclusió principal?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Que el projecte genera un valor econòmic positiu i és acceptable la seva realització</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Que el projecte es troba en un punt d'equilibri, sense guanys ni pèrdues clares</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Que la taxa interna de rendibilitat (TIR) d'aquest projecte és exactament zero</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Que el projecte genera pèrdues i, per tant, no hauria de ser acceptat</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>5.</b> En un diagrama de punt d'equilibri, quan es considera que una empresa es troba en el 'punt mort'?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Quan l'import dels ingressos per venda s'iguala a l'import de la suma dels costos fixes i variables (benefici nul)</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Quan els ingressos superen els costos totals amb una diferència de entre el 10% i el 30%, sense tindré en compte les despeses de personal</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Quan es produeix la màxima quantitat possible</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Quan els costos fixos no tenen cap valor</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>6.</b> Com es calcula el temps estimat (<span class="arithmatex">\(t_e\)</span>) en termes probabilístics segons el mètode PERT?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">És la mitjana ponderada dels temps optimista, més probable i pessimista</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">És la doble mitjana aritmèticai harmònica entre el termini optimista i el pessimista</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">És el temps quan la probabilitat d'acabar és del 100%</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">És el temps en què la probabilitat d'acabar una tasca és del 50%</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>7.</b> Quina és la funció principal de l'Estructura de Desglossament del Treball (EDT) o WBS?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Establir el flux de caixa financer del projecte de manera detallada</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Calcular el benefici net i la rendibilitat financera total del projecte</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Definir els criteris d'acceptació i els tests de validació de programari</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Representar jeràrquicament les fases i entregables del projecte per facilitar-ne la gestió i el control</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>8.</b> Quin és l'objectiu principal del cap de projecte en la direcció d'un projecte industrial?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Satisfer el client i assegurar la viabilitat econòmica del projecte</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Seguir amb precisió les directrius del director funcional sense cap aportació pròpia</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Centrar-se exclusivament en l'excel·lència tècnica del producte final</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Garantir l'eliminació completa de tots els riscos, independentment del pressupost</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>9.</b> Segons les regles per a la compressió d'un projecte, quines activitats s'han de comprimir primer</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Les activitats del camí crític amb la sensibilitat de cost més alta</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Les activitats del camí crític amb menor sensibilitat de cost</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Les activitats amb la durada normal més llarga</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Qualsevol activitat que no formi part del camí crític</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>10.</b> Quina característica defineix l'índex econòmic 'Període de retorn' (pay-back)?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Estima el nombre d'anys que tarda un projecte a recuperar la inversió inicial</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Mesura la rendibilitat total del projecte al llarg del seu cicle de vida</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Calcula la diferència actualitzada entre tots els cobraments i pagaments futurs</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Indica el tipus d'actualització que iguala els fluxos de caixa a zero</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>11.</b> Quan es calcula un diagrama de GANTT des del final al principi del projecte per determinar les dates 'més tardanes' (LF), què es fa si d'una activitat eixen dues o més fletxes?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">S'agafa la data més gran d'entre les entrants</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">S'agafa la data més menuda d'entre les entrants</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Es calcula la mitjana de les dates entrants</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Es suma la durada a la data més primerenca</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>12.</b> En un diagrama de GANTT, com es calcula la data més primerenca de finalització (<span class="arithmatex">\(EF\)</span>) d'una activitat?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text"><span class="arithmatex">\(EF = LF - d\)</span> (Data final més tardana - durada)</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text"><span class="arithmatex">\(EF = LS + d\)</span> (Data d'inici més tardà + durada)</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text"><span class="arithmatex">\(EF = ES + d\)</span> (Data d'inici més primerenc + durada)</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text"><span class="arithmatex">\(EF = ES - d\)</span> (Data d'inici més primerenc - durada)</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>13.</b> Com es classifica un risc que es pot intuir a partir de l'experiència però del qual no es pot estimar la probabilitat d'ocurrència?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Risc calculable</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Risc previsible</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Risc imprevisible</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Risc intuïble</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>14.</b> Quin és l'objectiu principal del mètode CANVAS en la teoria de decisions?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Calcular la ruta crítica d'un projecte complex, optimitzant els terminis</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Analitzar errors de fabricació en un producte, sense incloure l'aspecte comercial</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Assegurar el desenvolupament d'un model de negoci clar, dividint el projecte en nou mòduls bàsics</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Substituir parcialment l'avaluació econòmica financera, enfocant-se en l'impacte ambiental</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>15.</b> En l'avaluació econòmica, en què consisteix l'enfocament 'de baix a dalt' (jerarquia ascendent)?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">L'estimació del cost total es determina a partir del cost dels components, utilitzant-se en fases avançades del projecte</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">S'utilitza principalment en les fases inicials, quan hi ha poca informació detallada disponible</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Es basa en el judici d'experts per obtenir una estimació global del cost del projectes sense desglossar components</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Primer s'estimen els costos a nivell de sistema basant-se en dades històriques i analogies</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>16.</b> En el mètode PERT, què representa la lletra <span class="arithmatex">\(b\)</span> en l'estimació de temps?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">El termini més probable</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">El termini pessimista</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">El termini optimista</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">El temps previst</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>17.</b> Què s'entén per 'sinergia' en un equip de projecte?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Que cada membre de l'equip treballa de forma aïllada per complir els seus objectius personals</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Que l'equip es limita a executar les directives del líder sense proposar cap mena de nova idea</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Que la suma dels pressupostos assignats a cada membre de l'equip és idèntica al pressupost total</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Que el resultat combinat de l'equip és més gran que la suma de les contribucions individuals</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>18.</b> En el context dels estils de lideratge, què caracteritza el 'lideratge orientat a la producció'?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">El líder pren totes les decisions i espera que l'equip segueixi instruccions sense qüestionar</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Prioritza l'increment de la productivitat i l'organització cap al compliment eficient d'objectius</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Se centra principalment en el benestar personal i el desenvolupament professional dels membres de l'equip</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">La presa de decisions es fa en equip i valora més el resultat que el procés de realització de la tasca</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>19.</b> En les tècniques de compressió de projectes, què és el 'Crash Cost'?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">El cost mínim total del projecte quan es realitza en condicions estàndard</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">El cost addicional de les activitats necessari per accelerar el projecte mès del seu temps normal</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">El cost total de la mà d'obra i els materials sense incloure les despeses indirectes</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">La diferència entre el benefici esperat i el cost real del projecte finalitzat</span></div>
+</div>
+</div>
+    </div>
+</body>
+</html>

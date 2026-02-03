@@ -1,0 +1,420 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "text": "En el context dels tipus de projectes, quina característica defineix específicament un 'Projecte Intern'?",
+            "options": [
+                {
+                    "text": "És la pròpia empresa qui assumeix l'execució, la figura del client no està clarament definida i no requereix una oferta prèvia formal",
+                    "is_correct": true
+                },
+                {
+                    "text": "Està enfocat sovint a la investigació sense una aplicació pràctica immediata",
+                    "is_correct": false
+                },
+                {
+                    "text": "És un projecte destinat principalment a la construcció d'infraestructures públiques amb finançament governamental",
+                    "is_correct": false
+                },
+                {
+                    "text": "El client encarrega la realització a una entitat externa i normalment requereix una oferta sota contracte",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 2,
+            "text": "En l'estructura d'un projecte, quina és la principal responsabilitat del 'Cap del Projecte'?",
+            "options": [
+                {
+                    "text": "Planificar, coordinar i controlar el projecte per assegurar que els objectius es compleixin",
+                    "is_correct": true
+                },
+                {
+                    "text": "Sol·licitar la realització del projecte i definir els requisits inicials",
+                    "is_correct": false
+                },
+                {
+                    "text": "Executar manualment les tasques tècniques sense responsabilitat de gestió",
+                    "is_correct": false
+                },
+                {
+                    "text": "Subministrar els mitjans materials o serveis necessaris per al projecte",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 3,
+            "text": "Quina definició correspon a la 'Investigació bàsica' segons el Manual de Frascati?",
+            "options": [
+                {
+                    "text": "Treball experimental o teòric emprès principalment per adquirir nous coneixements sobre els fonaments de fenòmens i fets observables, sense una aplicació o ús particular en els quals es prevegin",
+                    "is_correct": true
+                },
+                {
+                    "text": "Investigació enfocada en la introducció al mercat d'un producte tecnològicament millorat",
+                    "is_correct": false
+                },
+                {
+                    "text": "Investigació original realitzada amb l'objectiu específic d'assolir una finalitat pràctica concreta",
+                    "is_correct": false
+                },
+                {
+                    "text": "Treball sistemàtic basat en el coneixement i l'experiència pràctica per desenvolupar nous serveis",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 4,
+            "text": "Segons la norma UNE 157.001, quin és l'objectiu principal d'establir consideracions generals per als projectes?",
+            "options": [
+                {
+                    "text": "Precisar les característiques que han de satisfer els projectes perquè s'ajustin al propòsit al qual estan destinats, sense especificar els mètodes concrets d'elaboració",
+                    "is_correct": true
+                },
+                {
+                    "text": "Establir els preus mínims i màxims que els professionals poden cobrar pels seus serveis d'enginyeria",
+                    "is_correct": false
+                },
+                {
+                    "text": "Definir els procediments de càlcul matemàtic exactes que s'han d'aplicar a cada tipus d'instal·lació",
+                    "is_correct": false
+                },
+                {
+                    "text": "Imposar les eines de software específiques que s'han d'utilitzar obligatòriament en el disseny de plànols",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 5,
+            "text": "Què s'entén per 'subcontractar' en el context d'un projecte de telecomunicació?",
+            "options": [
+                {
+                    "text": "Procés mitjançant el qual una empresa transfereix responsabilitats o tasques a una altra empresa especialitzada, generalment externa",
+                    "is_correct": true
+                },
+                {
+                    "text": "La gestió de la sol·licitud de subvencions o ajuts econòmics per a assegurar el finançament del projecte",
+                    "is_correct": false
+                },
+                {
+                    "text": "L'acte de contractar exclusivament personal intern per a reforçar la capacitat productiva de l'empresa",
+                    "is_correct": false
+                },
+                {
+                    "text": "La venda directament del producte final al client, eliminant intermediaris en la cadena de distribució",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 6,
+            "text": "En un projecte extern, quins elements s'associen típicament al 'Plec administratiu' i no al 'Plec tècnic' en un Plec de Condicions?",
+            "options": [
+                {
+                    "text": "Objectius del contracte, criteris d'adjudicació i condicions de pagament",
+                    "is_correct": true
+                },
+                {
+                    "text": "Especificacions tècniques detallades i estàndards de qualitat aplicables al producte",
+                    "is_correct": false
+                },
+                {
+                    "text": "Descripció dels continguts dels treballs i plànols de disseny o execució",
+                    "is_correct": false
+                },
+                {
+                    "text": "Càlculs d'enginyeria, resultats de simulacions i protocols de proves",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 7,
+            "text": "Quines són les quatre grans fases seqüencials del cicle de vida d'un projecte industrial?",
+            "options": [
+                {
+                    "text": "Disseny, Programació, Fabricació i Venda",
+                    "is_correct": false
+                },
+                {
+                    "text": "Idea, Oferta, Negociació i Contracte",
+                    "is_correct": false
+                },
+                {
+                    "text": "Investigació, Desenvolupament, Innovació i Màrqueting",
+                    "is_correct": false
+                },
+                {
+                    "text": "Inici, Avantprojecte, Projecte i Tancament",
+                    "is_correct": true
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 3
+        },
+        {
+            "id": 8,
+            "text": "Segons la norma UNE 157.001, què ha d'expressar obligatòriament el títol de tot projecte?",
+            "options": [
+                {
+                    "text": "De forma clara i inequívoca el producte, obra, instal·lació, servei o programari objecte del mateix",
+                    "is_correct": true
+                },
+                {
+                    "text": "El pressupost total amb els impostos inclosos i la seva descomposició",
+                    "is_correct": false
+                },
+                {
+                    "text": "El nom complet dels principals responsables del projecte i la seva titulació",
+                    "is_correct": false
+                },
+                {
+                    "text": "La data d'inici i finalització del projecte, així com el termini d'execució",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 9,
+            "text": "Segons la Llei 2/1964 sobre atribucions professionals, quina capacitat té un Enginyer de Telecomunicació respecte a la direcció d'obres?",
+            "options": [
+                {
+                    "text": "No pot dirigir la instal·lació o muntatge, limitant-se a la docència i la investigació",
+                    "is_correct": false
+                },
+                {
+                    "text": "Només pot dirigir projectes que hagin sigut redactats i signats per ell mateix",
+                    "is_correct": false
+                },
+                {
+                    "text": "La direcció d'obra és exclusiva dels arquitectes, sense capacitat per a l'enginyer de telecomunicació en aquest àmbit",
+                    "is_correct": false
+                },
+                {
+                    "text": "Té l'atribució de dirigir les activitats objecte dels projectes, inclús quan els projectes hagin sigut elaborats per un tercer",
+                    "is_correct": true
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 3
+        },
+        {
+            "id": 10,
+            "text": "Quina és la diferència fonamental entre les activitats de 'Producció' i les de 'Projectes' dins d'una empresa industrial?",
+            "options": [
+                {
+                    "text": "La producció té uns costos i terminis establerts, mentre que els projectes poden tenir flexibilitat en la inversió",
+                    "is_correct": false
+                },
+                {
+                    "text": "La producció requereix direcció tècnica prèvia, mentre que els projectes són gestionats per equips multidisciplinaris",
+                    "is_correct": false
+                },
+                {
+                    "text": "La producció es refereix a activitats contínues i repetitives, mentre que els projectes són activitats de durada determinada (discontínues) i úniques",
+                    "is_correct": true
+                },
+                {
+                    "text": "La producció pot subcontractar-se, mentre que els projectes es realitzen majoritàriament de forma interna",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 2
+        },
+        {
+            "id": 11,
+            "text": "Segons el Project Management Institute (PMI), quina és la definició correcta d'un projecte?",
+            "options": [
+                {
+                    "text": "És un conjunt d'escrits, càlculs i dibuixos que es realitzen per a donar una idea de com ha de ser una obra d'arquitectura",
+                    "is_correct": false
+                },
+                {
+                    "text": "És un esforç temporal que s'escomet per a crear un producte, servei o resultat de caràcter únic",
+                    "is_correct": true
+                },
+                {
+                    "text": "És una planificació que consisteix en un conjunt d'activitats sense limitació temporal destinades a la producció massiva",
+                    "is_correct": false
+                },
+                {
+                    "text": "És un treball continu i repetitiu realitzat per una àrea funcional de l'empresa per a mantenir les operacions",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 1
+        },
+        {
+            "id": 12,
+            "text": "Dins de la classificació de projectes industrials, quin dels següents exemples es correspon millor amb un 'Projecte d'Infraestructura'?",
+            "options": [
+                {
+                    "text": "El desenvolupament d'una nova aplicació informàtica de gestió",
+                    "is_correct": false
+                },
+                {
+                    "text": "El disseny d'un nou model d'automòbil per part de l'Oficina Tècnica",
+                    "is_correct": false
+                },
+                {
+                    "text": "La construcció d'una nova planta de fabricació o un edifici",
+                    "is_correct": true
+                },
+                {
+                    "text": "L'organització d'un esdeveniment com els Jocs Olímpics",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 2
+        },
+        {
+            "id": 13,
+            "text": "Quines activitats són característiques de la fase d''Avantprojecte'?",
+            "options": [
+                {
+                    "text": "Anàlisi de viabilitat, avaluació de riscos, planificació de contingències i càlcul d'indicadors econòmics",
+                    "is_correct": true
+                },
+                {
+                    "text": "Validació financera, justificació de costos i presentació de la documentació definitiva",
+                    "is_correct": false
+                },
+                {
+                    "text": "Formulació de la idea inicial i recerca preliminar de l'estat de la tècnica",
+                    "is_correct": false
+                },
+                {
+                    "text": "Adquisició de materials, muntatge de la infraestructura i inici de les operacions",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 14,
+            "text": "En la gestió de projectes, quina de les següents tasques NO es considera típicament una funció directa de la direcció de projectes?",
+            "options": [
+                {
+                    "text": "La valoració en temps i recursos econòmics, materials i humans",
+                    "is_correct": false
+                },
+                {
+                    "text": "La identificació d'activitats i la planificació detallada",
+                    "is_correct": false
+                },
+                {
+                    "text": "La detecció de riscos i la implementació d'accions preventives",
+                    "is_correct": false
+                },
+                {
+                    "text": "L'execució manual i repetitiva de les tasques operatives de producció",
+                    "is_correct": true
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 3
+        },
+        {
+            "id": 15,
+            "text": "En un projecte extern, quina fase de l'oferta inclou l'establiment d'un preu objectiu i la possible realització d'una subhasta?",
+            "options": [
+                {
+                    "text": "Fase 2: Presentació de l'oferta",
+                    "is_correct": false
+                },
+                {
+                    "text": "Fase 0: Recepció del plec de condicions",
+                    "is_correct": false
+                },
+                {
+                    "text": "Fase 3: Negociació de l'oferta",
+                    "is_correct": true
+                },
+                {
+                    "text": "Fase 1: Anàlisi i elaboració de l'oferta",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 2
+        },
+        {
+            "id": 16,
+            "text": "Què representa el 'Cicle de sobreexpectació' o Corba de Gartner en el context de nous projectes tecnològics?",
+            "options": [
+                {
+                    "text": "Representa la maduresa i adopció de tecnologies, que il·lustra l'entusiasme sobredimensionat i la subsegüent decepció",
+                    "is_correct": true
+                },
+                {
+                    "text": "El cronograma estàndard que ha de seguir qualsevol projecte d'enginyeria segons les normes del sector",
+                    "is_correct": false
+                },
+                {
+                    "text": "Un gràfic que mesura principalment la capacitat de producció d'una planta industrial al llarg del temps",
+                    "is_correct": false
+                },
+                {
+                    "text": "La relació entre la inversió econòmica en R+D i el retorn financer a curt termini",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        }
+    ]
+}

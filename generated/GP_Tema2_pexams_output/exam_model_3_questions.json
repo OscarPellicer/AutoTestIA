@@ -1,0 +1,498 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "text": "Què és la Taxa Interna de Rendibilitat (TIR)?",
+            "options": [
+                {
+                    "text": "Una mesura de la taxa d'inflació esperada que s'aplica anualment a un projecte d'inversió",
+                    "is_correct": false
+                },
+                {
+                    "text": "El rati que mesura el benefici net en relació amb el cost inicial total de la inversió",
+                    "is_correct": false
+                },
+                {
+                    "text": "La suma total de tots els fluxos de caixa projectats sense aplicar cap actualització",
+                    "is_correct": false
+                },
+                {
+                    "text": "El valor de la taxa de descompte o interès que fa que el Valor Actual Net (VAN) siga exactament zero",
+                    "is_correct": true
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 3
+        },
+        {
+            "id": 2,
+            "text": "Com es defineix la folgança ($H$) d'una activitat en un diagrama de GANTT?",
+            "options": [
+                {
+                    "text": "$H = ES - LS$",
+                    "is_correct": false
+                },
+                {
+                    "text": "$H = LF + LS$",
+                    "is_correct": false
+                },
+                {
+                    "text": "$H = LF - EF$ o bé $H = LS - ES$",
+                    "is_correct": true
+                },
+                {
+                    "text": "$H = EF - ES$ o bé $H = EE - SS$",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 2
+        },
+        {
+            "id": 3,
+            "text": "Què implica una bona planificació de recursos segons les tècniques d'anivellament?",
+            "options": [
+                {
+                    "text": "Que el camí crític es redueixi significativament independentment de la càrrega de treball",
+                    "is_correct": false
+                },
+                {
+                    "text": "Que el valor eficaç (RMS) dels recursos sigui el menor possible i s'acosti al valor mitjà (DC)",
+                    "is_correct": true
+                },
+                {
+                    "text": "Que el valor eficaç (RMS) sigui màxim per assegurar una elevada disponibilitat",
+                    "is_correct": false
+                },
+                {
+                    "text": "Que s'assignin gran part dels recursos al principi del projecte per accelerar fases",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 1
+        },
+        {
+            "id": 4,
+            "text": "Si al calcular el Valor Actual Net (VAN) d'un projecte s'obté un valor superior a 0, quina és la conclusió principal?",
+            "options": [
+                {
+                    "text": "Que la taxa interna de rendibilitat (TIR) d'aquest projecte és exactament zero",
+                    "is_correct": false
+                },
+                {
+                    "text": "Que el projecte genera pèrdues i, per tant, no hauria de ser acceptat",
+                    "is_correct": false
+                },
+                {
+                    "text": "Que el projecte genera un valor econòmic positiu i és acceptable la seva realització",
+                    "is_correct": true
+                },
+                {
+                    "text": "Que el projecte es troba en un punt d'equilibri, sense guanys ni pèrdues clares",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 2
+        },
+        {
+            "id": 5,
+            "text": "En un diagrama de punt d'equilibri, quan es considera que una empresa es troba en el 'punt mort'?",
+            "options": [
+                {
+                    "text": "Quan els costos fixos no tenen cap valor",
+                    "is_correct": false
+                },
+                {
+                    "text": "Quan els ingressos superen els costos totals amb una diferència de entre el 10% i el 30%, sense tindré en compte les despeses de personal",
+                    "is_correct": false
+                },
+                {
+                    "text": "Quan l'import dels ingressos per venda s'iguala a l'import de la suma dels costos fixes i variables (benefici nul)",
+                    "is_correct": true
+                },
+                {
+                    "text": "Quan es produeix la màxima quantitat possible",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 2
+        },
+        {
+            "id": 6,
+            "text": "Com es calcula el temps estimat ($t_e$) en termes probabilístics segons el mètode PERT?",
+            "options": [
+                {
+                    "text": "És la mitjana ponderada dels temps optimista, més probable i pessimista",
+                    "is_correct": true
+                },
+                {
+                    "text": "És el temps quan la probabilitat d'acabar és del 100%",
+                    "is_correct": false
+                },
+                {
+                    "text": "És el temps en què la probabilitat d'acabar una tasca és del 50%",
+                    "is_correct": false
+                },
+                {
+                    "text": "És la doble mitjana aritmèticai harmònica entre el termini optimista i el pessimista",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 7,
+            "text": "Quina és la funció principal de l'Estructura de Desglossament del Treball (EDT) o WBS?",
+            "options": [
+                {
+                    "text": "Representar jeràrquicament les fases i entregables del projecte per facilitar-ne la gestió i el control",
+                    "is_correct": true
+                },
+                {
+                    "text": "Definir els criteris d'acceptació i els tests de validació de programari",
+                    "is_correct": false
+                },
+                {
+                    "text": "Calcular el benefici net i la rendibilitat financera total del projecte",
+                    "is_correct": false
+                },
+                {
+                    "text": "Establir el flux de caixa financer del projecte de manera detallada",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 8,
+            "text": "Quin és l'objectiu principal del cap de projecte en la direcció d'un projecte industrial?",
+            "options": [
+                {
+                    "text": "Garantir l'eliminació completa de tots els riscos, independentment del pressupost",
+                    "is_correct": false
+                },
+                {
+                    "text": "Seguir amb precisió les directrius del director funcional sense cap aportació pròpia",
+                    "is_correct": false
+                },
+                {
+                    "text": "Centrar-se exclusivament en l'excel·lència tècnica del producte final",
+                    "is_correct": false
+                },
+                {
+                    "text": "Satisfer el client i assegurar la viabilitat econòmica del projecte",
+                    "is_correct": true
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 3
+        },
+        {
+            "id": 9,
+            "text": "Segons les regles per a la compressió d'un projecte, quines activitats s'han de comprimir primer",
+            "options": [
+                {
+                    "text": "Les activitats amb la durada normal més llarga",
+                    "is_correct": false
+                },
+                {
+                    "text": "Qualsevol activitat que no formi part del camí crític",
+                    "is_correct": false
+                },
+                {
+                    "text": "Les activitats del camí crític amb la sensibilitat de cost més alta",
+                    "is_correct": false
+                },
+                {
+                    "text": "Les activitats del camí crític amb menor sensibilitat de cost",
+                    "is_correct": true
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 3
+        },
+        {
+            "id": 10,
+            "text": "Quina característica defineix l'índex econòmic 'Període de retorn' (pay-back)?",
+            "options": [
+                {
+                    "text": "Mesura la rendibilitat total del projecte al llarg del seu cicle de vida",
+                    "is_correct": false
+                },
+                {
+                    "text": "Calcula la diferència actualitzada entre tots els cobraments i pagaments futurs",
+                    "is_correct": false
+                },
+                {
+                    "text": "Estima el nombre d'anys que tarda un projecte a recuperar la inversió inicial",
+                    "is_correct": true
+                },
+                {
+                    "text": "Indica el tipus d'actualització que iguala els fluxos de caixa a zero",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 2
+        },
+        {
+            "id": 11,
+            "text": "Quan es calcula un diagrama de GANTT des del final al principi del projecte per determinar les dates 'més tardanes' (LF), què es fa si d'una activitat eixen dues o més fletxes?",
+            "options": [
+                {
+                    "text": "S'agafa la data més menuda d'entre les entrants",
+                    "is_correct": true
+                },
+                {
+                    "text": "S'agafa la data més gran d'entre les entrants",
+                    "is_correct": false
+                },
+                {
+                    "text": "Es suma la durada a la data més primerenca",
+                    "is_correct": false
+                },
+                {
+                    "text": "Es calcula la mitjana de les dates entrants",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 12,
+            "text": "En un diagrama de GANTT, com es calcula la data més primerenca de finalització ($EF$) d'una activitat?",
+            "options": [
+                {
+                    "text": "$EF = ES + d$ (Data d'inici més primerenc + durada)",
+                    "is_correct": true
+                },
+                {
+                    "text": "$EF = LS + d$ (Data d'inici més tardà + durada)",
+                    "is_correct": false
+                },
+                {
+                    "text": "$EF = ES - d$ (Data d'inici més primerenc - durada)",
+                    "is_correct": false
+                },
+                {
+                    "text": "$EF = LF - d$ (Data final més tardana - durada)",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 13,
+            "text": "Com es classifica un risc que es pot intuir a partir de l'experiència però del qual no es pot estimar la probabilitat d'ocurrència?",
+            "options": [
+                {
+                    "text": "Risc imprevisible",
+                    "is_correct": false
+                },
+                {
+                    "text": "Risc previsible",
+                    "is_correct": true
+                },
+                {
+                    "text": "Risc calculable",
+                    "is_correct": false
+                },
+                {
+                    "text": "Risc intuïble",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 1
+        },
+        {
+            "id": 14,
+            "text": "Quin és l'objectiu principal del mètode CANVAS en la teoria de decisions?",
+            "options": [
+                {
+                    "text": "Substituir parcialment l'avaluació econòmica financera, enfocant-se en l'impacte ambiental",
+                    "is_correct": false
+                },
+                {
+                    "text": "Calcular la ruta crítica d'un projecte complex, optimitzant els terminis",
+                    "is_correct": false
+                },
+                {
+                    "text": "Analitzar errors de fabricació en un producte, sense incloure l'aspecte comercial",
+                    "is_correct": false
+                },
+                {
+                    "text": "Assegurar el desenvolupament d'un model de negoci clar, dividint el projecte en nou mòduls bàsics",
+                    "is_correct": true
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 3
+        },
+        {
+            "id": 15,
+            "text": "En l'avaluació econòmica, en què consisteix l'enfocament 'de baix a dalt' (jerarquia ascendent)?",
+            "options": [
+                {
+                    "text": "L'estimació del cost total es determina a partir del cost dels components, utilitzant-se en fases avançades del projecte",
+                    "is_correct": true
+                },
+                {
+                    "text": "Es basa en el judici d'experts per obtenir una estimació global del cost del projectes sense desglossar components",
+                    "is_correct": false
+                },
+                {
+                    "text": "S'utilitza principalment en les fases inicials, quan hi ha poca informació detallada disponible",
+                    "is_correct": false
+                },
+                {
+                    "text": "Primer s'estimen els costos a nivell de sistema basant-se en dades històriques i analogies",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 16,
+            "text": "En el mètode PERT, què representa la lletra $b$ en l'estimació de temps?",
+            "options": [
+                {
+                    "text": "El termini optimista",
+                    "is_correct": false
+                },
+                {
+                    "text": "El termini més probable",
+                    "is_correct": false
+                },
+                {
+                    "text": "El temps previst",
+                    "is_correct": false
+                },
+                {
+                    "text": "El termini pessimista",
+                    "is_correct": true
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 3
+        },
+        {
+            "id": 17,
+            "text": "Què s'entén per 'sinergia' en un equip de projecte?",
+            "options": [
+                {
+                    "text": "Que el resultat combinat de l'equip és més gran que la suma de les contribucions individuals",
+                    "is_correct": true
+                },
+                {
+                    "text": "Que la suma dels pressupostos assignats a cada membre de l'equip és idèntica al pressupost total",
+                    "is_correct": false
+                },
+                {
+                    "text": "Que cada membre de l'equip treballa de forma aïllada per complir els seus objectius personals",
+                    "is_correct": false
+                },
+                {
+                    "text": "Que l'equip es limita a executar les directives del líder sense proposar cap mena de nova idea",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 0
+        },
+        {
+            "id": 18,
+            "text": "En el context dels estils de lideratge, què caracteritza el 'lideratge orientat a la producció'?",
+            "options": [
+                {
+                    "text": "La presa de decisions es fa en equip i valora més el resultat que el procés de realització de la tasca",
+                    "is_correct": false
+                },
+                {
+                    "text": "Prioritza l'increment de la productivitat i l'organització cap al compliment eficient d'objectius",
+                    "is_correct": true
+                },
+                {
+                    "text": "El líder pren totes les decisions i espera que l'equip segueixi instruccions sense qüestionar",
+                    "is_correct": false
+                },
+                {
+                    "text": "Se centra principalment en el benestar personal i el desenvolupament professional dels membres de l'equip",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 1
+        },
+        {
+            "id": 19,
+            "text": "En les tècniques de compressió de projectes, què és el 'Crash Cost'?",
+            "options": [
+                {
+                    "text": "La diferència entre el benefici esperat i el cost real del projecte finalitzat",
+                    "is_correct": false
+                },
+                {
+                    "text": "El cost total de la mà d'obra i els materials sense incloure les despeses indirectes",
+                    "is_correct": false
+                },
+                {
+                    "text": "El cost addicional de les activitats necessari per accelerar el projecte mès del seu temps normal",
+                    "is_correct": true
+                },
+                {
+                    "text": "El cost mínim total del projecte quan es realitza en condicions estàndard",
+                    "is_correct": false
+                }
+            ],
+            "image_source": null,
+            "max_image_width": null,
+            "max_image_height": null,
+            "correct_answer_index": 2
+        }
+    ]
+}

@@ -1,0 +1,629 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gestió de projectes - Examen Parcial 1 - Model 3</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700&display=swap">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        /* pexams default CSS */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #333;
+    -webkit-print-color-adjust: exact; /* Ensures colors and backgrounds are printed */
+}
+
+@page {
+    size: A4;
+    margin: 15mm;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    color: black;
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 14pt; }
+h2 { font-size: 12pt; }
+
+.exam-title { font-size: 14pt; margin-bottom: 2mm; }
+.exam-subtitle { font-size: 12pt; margin-bottom: 2mm; }
+
+/* --- PAGE CONTAINERS --- */
+.page-container {
+    width: 100%;
+    height: 100%;
+    page-break-after: always; /* Ensure each container is a new page */
+}
+
+/* --- ANSWER SHEET --- */
+.answer-sheet-page {
+    position: relative; /* Needed for absolute positioning of children */
+    width: 180mm;
+    height: 267mm; /* A4 height minus margins */
+}
+
+.exam-info, .student-name-label, .student-id-label, .student-signature-label {
+    /* Shared styles for header text elements */
+    font-size: 10pt;
+    color: #333;
+}
+.exam-info span {
+    margin-right: 5mm;
+    display: block;
+}
+
+.student-info, .student-name, .student-id-grid {
+    /* No longer needed for layout */
+    all: unset;
+}
+
+.id-box, .student-name-box, .student-signature-box {
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.model-id-box {
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.model-id-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+.instructions-box {
+    border: 1px solid #000000;
+    padding: 2mm;
+    font-size: 7pt;
+    width: 70mm;
+    border-radius: 2px;
+}
+.instructions-box h4 {
+    margin-top: 0;
+    margin-bottom: 1mm;
+    font-size: 8pt;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 1mm;
+}
+.instructions-box ul {
+    margin: 0;
+    padding-left: 3mm;
+    list-style-position: outside;
+}
+.instructions-box li {
+    margin-bottom: 1.5mm;
+}
+.instruction-example-container {
+    list-style-type: none;
+}
+.instruction-example {
+    display: flex;
+    align-items: center;
+    margin-top: 1mm;
+}
+.instruction-example span {
+    margin-right: 2mm;
+}
+.instruction-example img {
+    /* Size is now set in the SVG itself */
+}
+
+.example-box {
+    border: 1px solid black;
+    width: 5mm;
+    height: 2mm;
+    border-radius: 2px;
+    position: relative; /* For positioning the line */
+}
+
+.example-box.correct {
+    background-color: black;
+}
+
+.example-box.incorrect .incorrect-line {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background-color: black;
+    transform: translateY(-50%);
+}
+
+.answer-group, .answer-row, .options-container {
+    /* These are no longer used for positioning */
+    all: unset;
+}
+
+.answer-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+.header-q-num, .question-number {
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: left;
+    line-height: 1; /* Reset line height */
+}
+
+.header-option {
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.option-box {
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+/* --- FIDUCIAL MARKERS --- */
+.fiducial {
+    position: absolute;
+    width: 8mm;
+    height: 8mm;
+}
+.fiducial::before, .fiducial::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+}
+.fiducial::before {
+    left: 50%;
+    width: 1mm;
+    height: 100%;
+    transform: translateX(-50%);
+}
+.fiducial::after {
+    top: 50%;
+    height: 1mm;
+    width: 100%;
+    transform: translateY(-50%);
+}
+.fiducial.top-left { top: 0; left: 0; }
+.fiducial.top-right { top: 0; right: 0; }
+.fiducial.bottom-left { bottom: 5mm; left: 0; }
+.fiducial.bottom-right { bottom: 5mm; right: 0; }
+
+/* --- QUESTION LAYOUT --- */
+.questions-container {
+    width: 100%;
+    height: 100%;
+}
+
+.questions-container.two-columns {
+    column-count: 2;
+    column-gap: 15mm;
+}
+
+.questions-container.three-columns {
+    column-count: 3;
+    column-gap: 10mm;
+}
+
+.question-wrapper {
+    break-inside: avoid-column;
+    padding-bottom: 1em;
+}
+
+.question-text {
+    margin-bottom: 0.5em;
+}
+
+.options-block {
+    padding-left: 20px;
+}
+
+.option-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.2em;
+}
+
+.option-label {
+    display: inline-block;
+    min-width: 25px;
+    flex-shrink: 0;
+}
+
+.option-text p {
+    margin: 0;
+    display: inline;
+}
+
+.question-wrapper ul {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    padding-left: 20px;
+    list-style-position: inside;
+}
+
+.question-wrapper ul li {
+    margin-bottom: 0.1em;
+}
+
+.question-wrapper ul li p {
+    margin: 0;
+    display: inline; /* To keep the text next to the list marker */
+}
+
+/* --- UTILITIES --- */
+img {
+    max-width: 100%;
+    height: auto;
+}
+img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+}
+img[alt~="left"] {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+}
+img[alt~="right"] {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+}
+
+    </style>
+    <style>
+        body { font-size: 11pt; }
+    </style>
+</head>
+<body>
+    
+<div class="page-container answer-sheet-page">
+    <div class="fiducial top-left"></div>
+    <div class="fiducial top-right"></div>
+    <div class="fiducial bottom-left"></div>
+    <div class="fiducial bottom-right"></div>
+    <h1 class="exam-title" style="position: absolute; left: 5mm; top: 5mm;">Gestió de projectes - Examen Parcial 1</h1>
+<div class="model-id-box" style="position: absolute; left: 5mm; top: 32mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="model-id-text" style="position: absolute; left: 5mm; top: 32mm; width: 4.5mm; height: 6.0mm;">3</div>
+<div class="exam-info" style="position: absolute; left: 5mm; top: 20mm;"><span>Course: Enginyeria de telecomunicacions</span>
+<span>Date: 2025-11-29</span></div>
+<div class="student-name-label" style="position: absolute; left: 5mm; top: 60mm;"><b>Student name</b></div>
+<div class="student-name-box" style="position: absolute; left: 5mm; top: 67mm; width: 75mm; height: 12mm;"></div>
+<div class="student-id-label" style="position: absolute; left: 5mm; top: 40mm;"><b>Student ID</b></div>
+<div class="id-box" style="position: absolute; left: 5.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 11.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 17.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 23.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 29.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 35.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 41.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 47.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 53.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="id-box" style="position: absolute; left: 59.0mm; top: 47mm; width: 4.5mm; height: 6.0mm;"></div>
+<div class="student-signature-label" style="position: absolute; left: 90mm; top: 60mm;"><b>Signature</b></div>
+<div class="student-signature-box" style="position: absolute; left: 90mm; top: 67mm; width: 75mm; height: 12mm;"></div>
+<div style="position: absolute; left: 90mm; top: 20mm;">
+    <div class="instructions-box">
+        <h4>Instructions</h4>
+        <ul>
+            <li><b>ID:</b> Use one character (A-Z, 0-9) per box.</li>
+            <li><b>Answers:</b> Completely fill the box of your chosen answer.</li>
+            <li class="instruction-example-container">
+                <div class="instruction-example">
+                    <span>Correct:</span>
+                    <div class="example-box correct"></div>
+                </div>
+                <div class="instruction-example">
+                    <span>Incorrect:</span>
+                    <div class="example-box incorrect"><div class="incorrect-line"></div></div>
+                </div>
+            </li>
+            <li><b>Corrections:</b> Use correction fluid to erase mistakes.</li>
+        </ul>
+    </div>
+    </div>
+<div class="header-option" style="position: absolute; left: 15.0mm; top: 85.0mm; width: 5.0mm; height: 4.0mm;">A</div>
+<div class="header-option" style="position: absolute; left: 22.0mm; top: 85.0mm; width: 5.0mm; height: 4.0mm;">B</div>
+<div class="header-option" style="position: absolute; left: 29.0mm; top: 85.0mm; width: 5.0mm; height: 4.0mm;">C</div>
+<div class="header-option" style="position: absolute; left: 36.0mm; top: 85.0mm; width: 5.0mm; height: 4.0mm;">D</div>
+<div class="header-option" style="position: absolute; left: 15.0mm; top: 117.0mm; width: 5.0mm; height: 4.0mm;">A</div>
+<div class="header-option" style="position: absolute; left: 22.0mm; top: 117.0mm; width: 5.0mm; height: 4.0mm;">B</div>
+<div class="header-option" style="position: absolute; left: 29.0mm; top: 117.0mm; width: 5.0mm; height: 4.0mm;">C</div>
+<div class="header-option" style="position: absolute; left: 36.0mm; top: 117.0mm; width: 5.0mm; height: 4.0mm;">D</div>
+<div class="header-option" style="position: absolute; left: 15.0mm; top: 149.0mm; width: 5.0mm; height: 4.0mm;">A</div>
+<div class="header-option" style="position: absolute; left: 22.0mm; top: 149.0mm; width: 5.0mm; height: 4.0mm;">B</div>
+<div class="header-option" style="position: absolute; left: 29.0mm; top: 149.0mm; width: 5.0mm; height: 4.0mm;">C</div>
+<div class="header-option" style="position: absolute; left: 36.0mm; top: 149.0mm; width: 5.0mm; height: 4.0mm;">D</div>
+<div class="header-option" style="position: absolute; left: 15.0mm; top: 181.0mm; width: 5.0mm; height: 4.0mm;">A</div>
+<div class="header-option" style="position: absolute; left: 22.0mm; top: 181.0mm; width: 5.0mm; height: 4.0mm;">B</div>
+<div class="header-option" style="position: absolute; left: 29.0mm; top: 181.0mm; width: 5.0mm; height: 4.0mm;">C</div>
+<div class="header-option" style="position: absolute; left: 36.0mm; top: 181.0mm; width: 5.0mm; height: 4.0mm;">D</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 91.0mm; width: 10.0mm; height: 2.0mm;">1</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 96.0mm; width: 10.0mm; height: 2.0mm;">2</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 101.0mm; width: 10.0mm; height: 2.0mm;">3</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 106.0mm; width: 10.0mm; height: 2.0mm;">4</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 111.0mm; width: 10.0mm; height: 2.0mm;">5</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 123.0mm; width: 10.0mm; height: 2.0mm;">6</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 128.0mm; width: 10.0mm; height: 2.0mm;">7</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 133.0mm; width: 10.0mm; height: 2.0mm;">8</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 138.0mm; width: 10.0mm; height: 2.0mm;">9</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 143.0mm; width: 10.0mm; height: 2.0mm;">10</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 155.0mm; width: 10.0mm; height: 2.0mm;">11</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 160.0mm; width: 10.0mm; height: 2.0mm;">12</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 165.0mm; width: 10.0mm; height: 2.0mm;">13</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 170.0mm; width: 10.0mm; height: 2.0mm;">14</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 175.0mm; width: 10.0mm; height: 2.0mm;">15</div>
+<div class="question-number" style="position: absolute; left: 5.0mm; top: 187.0mm; width: 10.0mm; height: 2.0mm;">16</div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 91.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 91.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 91.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 91.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 96.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 96.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 96.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 96.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 101.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 101.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 101.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 101.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 106.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 106.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 106.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 106.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 111.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 111.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 111.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 111.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 123.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 123.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 123.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 123.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 128.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 128.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 128.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 128.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 133.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 133.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 133.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 133.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 138.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 138.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 138.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 138.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 143.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 143.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 143.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 143.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 155.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 155.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 155.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 155.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 160.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 160.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 160.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 160.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 165.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 165.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 165.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 165.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 170.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 170.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 170.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 170.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 175.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 175.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 175.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 175.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 15.0mm; top: 187.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 22.0mm; top: 187.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 29.0mm; top: 187.0mm; width: 5.0mm; height: 2.0mm;"></div>
+<div class="option-box" style="position: absolute; left: 36.0mm; top: 187.0mm; width: 5.0mm; height: 2.0mm;"></div>
+</div>
+
+    <div class="page-container" style="page-break-after: always;"></div>
+    <div class="page-container questions-container ">
+        <div class="question-wrapper">
+
+<div class="question-text"><b>1.</b> En el context dels tipus de projectes, quina característica defineix específicament un 'Projecte Intern'?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">És un projecte destinat principalment a la construcció d'infraestructures públiques amb finançament governamental</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">El client encarrega la realització a una entitat externa i normalment requereix una oferta sota contracte</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">És la pròpia empresa qui assumeix l'execució, la figura del client no està clarament definida i no requereix una oferta prèvia formal</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Està enfocat sovint a la investigació sense una aplicació pràctica immediata</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>2.</b> En l'estructura d'un projecte, quina és la principal responsabilitat del 'Cap del Projecte'?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Subministrar els mitjans materials o serveis necessaris per al projecte</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Sol·licitar la realització del projecte i definir els requisits inicials</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Executar manualment les tasques tècniques sense responsabilitat de gestió</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Planificar, coordinar i controlar el projecte per assegurar que els objectius es compleixin</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>3.</b> Quina definició correspon a la 'Investigació bàsica' segons el Manual de Frascati?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Investigació original realitzada amb l'objectiu específic d'assolir una finalitat pràctica concreta</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Treball experimental o teòric emprès principalment per adquirir nous coneixements sobre els fonaments de fenòmens i fets observables, sense una aplicació o ús particular en els quals es prevegin</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Investigació enfocada en la introducció al mercat d'un producte tecnològicament millorat</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Treball sistemàtic basat en el coneixement i l'experiència pràctica per desenvolupar nous serveis</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>4.</b> Segons la norma UNE 157.001, quin és l'objectiu principal d'establir consideracions generals per als projectes?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Establir els preus mínims i màxims que els professionals poden cobrar pels seus serveis d'enginyeria</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Definir els procediments de càlcul matemàtic exactes que s'han d'aplicar a cada tipus d'instal·lació</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Precisar les característiques que han de satisfer els projectes perquè s'ajustin al propòsit al qual estan destinats, sense especificar els mètodes concrets d'elaboració</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Imposar les eines de software específiques que s'han d'utilitzar obligatòriament en el disseny de plànols</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>5.</b> Què s'entén per 'subcontractar' en el context d'un projecte de telecomunicació?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">La venda directament del producte final al client, eliminant intermediaris en la cadena de distribució</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Procés mitjançant el qual una empresa transfereix responsabilitats o tasques a una altra empresa especialitzada, generalment externa</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">L'acte de contractar exclusivament personal intern per a reforçar la capacitat productiva de l'empresa</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">La gestió de la sol·licitud de subvencions o ajuts econòmics per a assegurar el finançament del projecte</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>6.</b> En un projecte extern, quins elements s'associen típicament al 'Plec administratiu' i no al 'Plec tècnic' en un Plec de Condicions?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Càlculs d'enginyeria, resultats de simulacions i protocols de proves</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Especificacions tècniques detallades i estàndards de qualitat aplicables al producte</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Descripció dels continguts dels treballs i plànols de disseny o execució</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Objectius del contracte, criteris d'adjudicació i condicions de pagament</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>7.</b> Quines són les quatre grans fases seqüencials del cicle de vida d'un projecte industrial?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Idea, Oferta, Negociació i Contracte</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Disseny, Programació, Fabricació i Venda</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Inici, Avantprojecte, Projecte i Tancament</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Investigació, Desenvolupament, Innovació i Màrqueting</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>8.</b> Segons la norma UNE 157.001, què ha d'expressar obligatòriament el títol de tot projecte?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">El nom complet dels principals responsables del projecte i la seva titulació</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">De forma clara i inequívoca el producte, obra, instal·lació, servei o programari objecte del mateix</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">La data d'inici i finalització del projecte, així com el termini d'execució</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">El pressupost total amb els impostos inclosos i la seva descomposició</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>9.</b> Segons la Llei 2/1964 sobre atribucions professionals, quina capacitat té un Enginyer de Telecomunicació respecte a la direcció d'obres?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Té l'atribució de dirigir les activitats objecte dels projectes, inclús quan els projectes hagin sigut elaborats per un tercer</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">No pot dirigir la instal·lació o muntatge, limitant-se a la docència i la investigació</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">La direcció d'obra és exclusiva dels arquitectes, sense capacitat per a l'enginyer de telecomunicació en aquest àmbit</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Només pot dirigir projectes que hagin sigut redactats i signats per ell mateix</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>10.</b> Quina és la diferència fonamental entre les activitats de 'Producció' i les de 'Projectes' dins d'una empresa industrial?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">La producció pot subcontractar-se, mentre que els projectes es realitzen majoritàriament de forma interna</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">La producció té uns costos i terminis establerts, mentre que els projectes poden tenir flexibilitat en la inversió</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">La producció requereix direcció tècnica prèvia, mentre que els projectes són gestionats per equips multidisciplinaris</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">La producció es refereix a activitats contínues i repetitives, mentre que els projectes són activitats de durada determinada (discontínues) i úniques</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>11.</b> Segons el Project Management Institute (PMI), quina és la definició correcta d'un projecte?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">És una planificació que consisteix en un conjunt d'activitats sense limitació temporal destinades a la producció massiva</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">És un conjunt d'escrits, càlculs i dibuixos que es realitzen per a donar una idea de com ha de ser una obra d'arquitectura</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">És un treball continu i repetitiu realitzat per una àrea funcional de l'empresa per a mantenir les operacions</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">És un esforç temporal que s'escomet per a crear un producte, servei o resultat de caràcter únic</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>12.</b> Dins de la classificació de projectes industrials, quin dels següents exemples es correspon millor amb un 'Projecte d'Infraestructura'?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">El desenvolupament d'una nova aplicació informàtica de gestió</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">La construcció d'una nova planta de fabricació o un edifici</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">El disseny d'un nou model d'automòbil per part de l'Oficina Tècnica</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">L'organització d'un esdeveniment com els Jocs Olímpics</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>13.</b> Quines activitats són característiques de la fase d''Avantprojecte'?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Adquisició de materials, muntatge de la infraestructura i inici de les operacions</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Anàlisi de viabilitat, avaluació de riscos, planificació de contingències i càlcul d'indicadors econòmics</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Validació financera, justificació de costos i presentació de la documentació definitiva</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Formulació de la idea inicial i recerca preliminar de l'estat de la tècnica</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>14.</b> En la gestió de projectes, quina de les següents tasques NO es considera típicament una funció directa de la direcció de projectes?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">L'execució manual i repetitiva de les tasques operatives de producció</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">La valoració en temps i recursos econòmics, materials i humans</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">La identificació d'activitats i la planificació detallada</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">La detecció de riscos i la implementació d'accions preventives</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>15.</b> En un projecte extern, quina fase de l'oferta inclou l'establiment d'un preu objectiu i la possible realització d'una subhasta?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Fase 2: Presentació de l'oferta</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">Fase 1: Anàlisi i elaboració de l'oferta</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">Fase 3: Negociació de l'oferta</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Fase 0: Recepció del plec de condicions</span></div>
+</div>
+</div>
+
+<div class="question-wrapper">
+
+<div class="question-text"><b>16.</b> Què representa el 'Cicle de sobreexpectació' o Corba de Gartner en el context de nous projectes tecnològics?</div>
+
+<div class="options-block">
+<div class="option-item"><span class="option-label"><b>A)</b></span><span class="option-text">Representa la maduresa i adopció de tecnologies, que il·lustra l'entusiasme sobredimensionat i la subsegüent decepció</span></div>
+<div class="option-item"><span class="option-label"><b>B)</b></span><span class="option-text">El cronograma estàndard que ha de seguir qualsevol projecte d'enginyeria segons les normes del sector</span></div>
+<div class="option-item"><span class="option-label"><b>C)</b></span><span class="option-text">La relació entre la inversió econòmica en R+D i el retorn financer a curt termini</span></div>
+<div class="option-item"><span class="option-label"><b>D)</b></span><span class="option-text">Un gràfic que mesura principalment la capacitat de producció d'una planta industrial al llarg del temps</span></div>
+</div>
+</div>
+    </div>
+</body>
+</html>
