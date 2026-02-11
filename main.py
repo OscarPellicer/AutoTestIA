@@ -41,7 +41,7 @@ def handle_test(args):
         image_path = os.path.join(script_dir, "media", "image.jpg")
         test_questions = 2
 
-        instructions = "This is a TEST RUN for the AutoTestIA library, a library that allows you to generate multiple-choice questions from text or images using LLms. Generate questions about Python programming. MAKE SURE to include at least one instance of all the formatting options in the questions and answers: **bold text**, *italic text*, `code`, $LaTeX_expression$ (such as $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$)."
+        instructions = "This is a TEST RUN for the AutoTestIA library, a library that allows you to generate multiple-choice questions from text or images using LLms. Generate questions about Python programming. MAKE SURE to include at least one instance of all the formatting options in the questions and answers: **bold text**, *italic text*, `code`, $LaTeX_expression$ (such as $\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$)."
 
         # --- 1. Generation ---
         print("\n--- Step 1: Generating questions (OpenRouter) ---")
