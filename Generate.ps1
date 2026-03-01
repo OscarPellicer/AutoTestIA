@@ -1,0 +1,12 @@
+autotestia generate GP_Tema2.pptx `
+  -o generated/GP_tema2.md `
+  -n 20 `
+  --provider openrouter `
+  --generator-model google/gemini-3-pro-preview `
+  --reviewer-model google/gemini-3-flash-preview `
+  --evaluator-model google/gemini-3-flash-preview `
+  --use-llm-review `
+  --evaluate-initial `
+  --evaluate-reviewed `
+  --language Spanish `
+  --generator-instructions "The questions must be diverse and cover the whole range of the source material. Review spanish language to not make grammar mistakes. Make sure english terms (those that are not translated to spanish), are properly quoted"
