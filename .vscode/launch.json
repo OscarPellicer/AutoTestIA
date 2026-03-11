@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "autotestia test",
+            "name": "test",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -11,7 +11,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate from pptx",
+            "name": "generate from pptx",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -33,7 +33,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate from instructions",
+            "name": "generate from instructions",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -51,7 +51,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate from md",
+            "name": "generate from md",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -73,7 +73,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia split",
+            "name": "split",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -90,7 +90,7 @@
             ]
         },
         {
-            "name": "autotestia merge",
+            "name": "merge",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -106,7 +106,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia shuffle",
+            "name": "shuffle",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -120,7 +120,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia export to Wooclap",
+            "name": "export to Wooclap",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -136,7 +136,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia export to R/Exams",
+            "name": "export to R/Exams",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -155,7 +155,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia export to pexams",
+            "name": "export to pexams",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -168,12 +168,12 @@
                 "--exam-course", "Máster en Ingeniería Biomédica",
                 "--shuffle-answers", "123",
                 "--exam-date", "2025-10-22",
-                "--exam-models", "1",
-                "--exam-font-size", "10pt",
-                "--exam-language", "es",
-                "--exam-generate-fakes", "1",
-                "--exam-generate-references",
-                "--exam-columns", "2",
+                "--num-models", "1",
+                "--font-size", "10pt",
+                "--lang", "es",
+                "--generate-fakes", "1",
+                "--generate-references",
+                "--columns", "2",
                 "--max-image-height", "300",
                 "--log-level", "DEBUG"
             ],
@@ -181,7 +181,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia correct pexams",
+            "name": "correct pexams",
             "type": "python",
             "request": "launch",
             "module": "pexams.main",
@@ -199,7 +199,7 @@
         
         // Sistemas informáticos y sistemas de información - Final Exam --------------------------------------------------------------
         {
-            "name": "autotestia generate final exam bd",
+            "name": "generate final exam bd",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -221,7 +221,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate final exam sql",
+            "name": "generate final exam sql",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -242,7 +242,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate final exam redes",
+            "name": "generate final exam redes",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -263,7 +263,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate final exam xml",
+            "name": "generate final exam xml",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -284,7 +284,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate final exam python",
+            "name": "generate final exam python",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -306,7 +306,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate final exam medical",
+            "name": "generate final exam medical",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -327,7 +327,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate final exam tema 3",
+            "name": "generate final exam tema 3",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -348,7 +348,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate final exam heart",
+            "name": "generate final exam heart",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -369,7 +369,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia generate final exam images",
+            "name": "generate final exam images",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -394,7 +394,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia merge final exam",
+            "name": "merge final exam",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -415,7 +415,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia merge final exam tema 3",
+            "name": "merge final exam tema 3",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -430,7 +430,7 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia export to pexams final exam",
+            "name": "export to pexams final exam",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
@@ -462,6 +462,30 @@
             "justMyCode": true
         },
         {
+            "name": "export to pexams partial2 (regen)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "export",
+                "pexams",
+                "generated/mib/partial2-regen/all.md",
+                "--exam-title", "Sistemas informáticos y sistemas de información - Parcial 2",
+                "--exam-course", "Máster en Ingeniería Biomédica",
+                "--shuffle-answers", "123",
+                "--exam-date", "2025-12-01",
+                "--num-models", "4",
+                "--font-size", "10pt",
+                "--lang", "es",
+                "--columns", "2",
+                "--max-image-height", "270",
+                "--keep-html",
+                "--custom-header", "**Instrucciones:** Las respuestas incorrectas serán penalizadas con **-0.25 puntos**. Solo se permite tener un bolígrafo, líquido corrector y su tarjeta de identificación encima de la mesa."
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "pexams correct final exam",
             "type": "python",
             "request": "launch",
@@ -469,36 +493,44 @@
             "cwd": "${workspaceFolder}",
             "args": [
                 "correct",
-                "--input-path", "generated/mib/final_exam/all_pexams_output/scanned.pdf",
-                "--exam-dir", "generated/mib/final_exam/all_pexams_output",
-                "--output-dir", "generated/mib/final_exam/all_pexams_output/correction_results",
-                "--input-csv", "generated/mib/final_exam/all_pexams_output/grades.csv",
+                "--input-path", "generated/mib/final_exam/all_tema3_pexams_output/20260119165542769.pdf",
+                "--exam-dir", "generated/mib/final_exam/all_tema3_pexams_output",
+                "--output-dir", "generated/mib/final_exam/all_tema3_pexams_output/correction_results",
+                "--input-csv", "generated/mib/partial2/all_pexams_output/grades.csv",
                 "--id-column", "ID estudiante",
-                "--mark-column", "#Final [10]",
+                // "--mark-column", "#Final [10]",
                 "--name-column", "Nombre",
                 "--simplify-csv",
-                "--fuzzy-id-match", "100",
+                "--fuzzy-id-match", "70",
                 // "--log-level", "DEBUG"
                 "--penalty", "0.25",
                 "--input-encoding", "utf-8",
                 "--input-sep", ",",
                 "--output-decimal-sep", ",",
-                "--only-analysis",
+                // "--only-analysis",
             ],
             "console": "integratedTerminal",
             "justMyCode": true
         },
 
-        // Procesamiento del Lenguaje Natural
+// Procesamiento del Lenguaje Natural -------------------------------------------------------------
         {
-            "name": "autotestia generate nlp",
+            "name": "generate nlp",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
                 "generate",
-                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/0_motivation_envs_course.md",
-                "-o", "generated/gcd_pln/0_motivation_envs_course.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/0_motivation_envs_course.md", "-o", "generated/gcd_pln/0_motivation_envs_course.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/1_intro_to_nlp.md", "-o", "generated/gcd_pln/1_intro_to_nlp.md",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/2_text_regex_libs.md", "-o", "generated/gcd_pln/2_text_regex_libs.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/3_preprocessing_representations.md", "-o", "generated/gcd_pln/3_preprocessing_representations.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/4_classification_evaluation.md", "-o", "generated/gcd_pln/4_classification_evaluation.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/5_embeddings.md", "-o", "generated/gcd_pln/5_embeddings.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/6_applied_nlp.md", "-o", "generated/gcd_pln/6_applied_nlp.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/7_neural_architectures_simple.md", "-o", "generated/gcd_pln/7_neural_architectures_simple.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/8_pretrained_llms.md", "-o", "generated/gcd_pln/8_pretrained_llms.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - GCD - Procesamiento del Lenguaje Natural/slides_25_26/9_llms_in_practice.md", "-o", "generated/gcd_pln/9_llms_in_practice.md",
                 "-n", "10",
                 "--generator-model", "google/gemini-3-pro-preview",
                 "--reviewer-model", "google/gemini-3-flash-preview", 
@@ -508,19 +540,29 @@
                 // "--generator-instructions", "This is not a true course lecture, just some introductory material about the course and the environment, so the questions will just be an example for the students to see what kind of questions they will be answering in the course.",
                 "--evaluate-initial",
                 "--evaluate-reviewed",
+                "--generator-instructions", "Focus on the interpretation and synthesis of regular expressions, or python code for working with text, the beautifulsoup library, and the spacy library. Make the questions hard (e.g. difficult regex) but concise, but do not make them hard in a way where they have to know the complete API of the libraries.",
             ],
             "console": "integratedTerminal",
             "justMyCode": true
         },
         {
-            "name": "autotestia export nlp to wooclap",
+            "name": "export nlp to wooclap",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
                 "export",
                 "wooclap",
-                "generated/gcd_pln/0_motivation_envs_course.md",
+                // "generated/gcd_pln/0_motivation_envs_course.md",
+                // "generated/gcd_pln/1_intro_to_nlp.md",
+                // "generated/gcd_pln/2_text_regex_libs.md",
+                "generated/gcd_pln/3_preprocessing_representations.md",
+                // "generated/gcd_pln/4_classification_evaluation.md",
+                // "generated/gcd_pln/5_embeddings.md",
+                // "generated/gcd_pln/6_applied_nlp.md",
+                // "generated/gcd_pln/7_neural_architectures_simple.md",
+                // "generated/gcd_pln/8_pretrained_llms.md",
+                // "generated/gcd_pln/9_llms_in_practice.md",
                 "--shuffle-questions", "123",
                 "--shuffle-answers", "123",
                 "--evaluate-final",
@@ -530,18 +572,140 @@
             "justMyCode": true
         },
         {
-            "name": "autotestia export nlp to moodle",
+            "name": "export nlp to moodle",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
                 "export",
                 "moodle_xml",
-                "generated/gcd_pln/0_motivation_envs_course.md",
+                // "generated/gcd_pln/0_motivation_envs_course.md",
+                // "generated/gcd_pln/1_intro_to_nlp.md",
+                // "generated/gcd_pln/2_text_regex_libs.md",
+                "generated/gcd_pln/3_preprocessing_representations.md",
+                // "generated/gcd_pln/4_classification_evaluation.md",
+                // "generated/gcd_pln/5_embeddings.md",
+                // "generated/gcd_pln/6_applied_nlp.md",
+                // "generated/gcd_pln/7_neural_architectures_simple.md",
+                // "generated/gcd_pln/8_pretrained_llms.md",
+                // "generated/gcd_pln/9_llms_in_practice.md",
                 "--shuffle-questions", "123",
                 "--shuffle-answers", "123",
                 "--evaluate-final",
                 "--evaluator-model", "google/gemini-3-flash-preview",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+// Auditoría de Algoritmos -------------------------------------------------------------
+        {
+            "name": "generate algaudit",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_01_Algoritmos_y_Machine_Learning.md", "-o", "generated/algaudit/1_algoritmos_y_machine_learning.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_02_Historia_Conceptos_y_Aplicaciones_de_la_IA._ChatGPT.md", "-o", "generated/algaudit/2_historia_conceptos_y_aplicaciones_de_la_ia_chatgpt.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_03_Privacidad_de_datos_y_seguridad.md", "-o", "generated/algaudit/3_privacidad_de_datos_y_seguridad.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_04_Equidad_algorítmica_y_sesgos.md", "-o", "generated/algaudit/4_equidad_algoritmica_y_sesgos.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_05_Transparencia_y_explicabilidad.md", "-o", "generated/algaudit/5_transparencia_y_explicabilidad.md",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_06_Seguridad_en_IA_avanzada.md", "-o", "generated/algaudit/6_seguridad_en_ia_avanzada.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_07_Estándares,_marco_legal_y_regulatorio.md", "-o", "generated/algaudit/7_estandares_marco_legal_y_regulatorio.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_08_Auditoria_de_LLMs.md", "-o", "generated/algaudit/8_auditoria_de_llms.md",
+                "-n", "8",
+                "--generator-model", "google/gemini-3-pro-preview",
+                "--reviewer-model", "google/gemini-3-flash-preview", 
+                "--evaluator-model", "google/gemini-3-flash-preview",
+                "--use-llm-review",
+                "--language", "es",
+                "--generator-instructions", "Make the questions and / or answers as short as possible, as they will be used for a Kahoot-style quiz during the class at the end of the lesson.",
+                "--evaluate-initial",
+                "--evaluate-reviewed",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "export algaudit to wooclap",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "export",
+                "wooclap",
+                // "generated/algaudit/1_algoritmos_y_machine_learning.md",
+                // "generated/algaudit/2_historia_conceptos_y_aplicaciones_de_la_ia_chatgpt.md",
+                // "generated/algaudit/3_privacidad_de_datos_y_seguridad.md",
+                // "generated/algaudit/4_equidad_algoritmica_y_sesgos.md",
+                // "generated/algaudit/5_transparencia_y_explicabilidad.md",
+                // "generated/algaudit/6_seguridad_en_ia_avanzada.md",
+                // "generated/algaudit/7_estandares_marco_legal_y_regulatorio.md",
+                "generated/algaudit/8_auditoria_de_llms.md",
+                "--shuffle-questions", "123",
+                "--shuffle-answers", "123",
+                "--evaluate-final",
+                "--evaluator-model", "google/gemini-3-flash-preview",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+
+// Correct online (Wooclap / Moodle results → update metadata.tsv) -------------------------------------------------------------
+        {
+            // Gestión de Proyectos - GIET: Wooclap results for GP_tema1
+            "name": "correct wooclap GIET GP_tema1",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "correct",
+                "wooclap",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Gestión de Proyectos - GIET/GP_tema1.md",
+                "--results",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Gestión de Proyectos - GIET/Wooclap_Cuestionario_tema_1-results.csv",
+                "--output-dir",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Gestión de Proyectos - GIET/GP_tema1_correction_results",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            // Teoria de Redes Eléctricas - GIEI: Wooclap results for complex numbers
+            // NOTE: no .tsv file exists yet in this folder; run 'autotestia generate' first
+            //       or copy the .tsv next to the .md before running this config.
+            // Switch the active .md line below if you want the bookchapter variant.
+            "name": "correct wooclap GtsvIEI complex numbers",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "correct",
+                "wooclap",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Teoria de Redes Eléctricas - GIEI/complex_numbers_questions.md",
+                // "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Teoria de Redes Eléctricas - GIEI/complex_numbers_bookchapter_questions.md",
+                "--results",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Teoria de Redes Eléctricas - GIEI/TYSJHU_Introduccion_a_numeros_complejos-results.xlsx",
+                "--output-dir",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Teoria de Redes Eléctricas - GIEI/complex_numbers_correction_results",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            // Procesado del Lenguaje Natural - PLN: Moodle results M2 → 2_text_regex_libs
+            "name": "correct moodle PLN M2 (2_text_regex_libs)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "correct",
+                "moodle",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Procesado del Lenguaje Natural - GCD/2_text_regex_libs.md",
+                "--results",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Procesado del Lenguaje Natural - GCD/2025-26 Processament del llenguatge natural Gr.A-T (36429)-M2-respostes.xlsx",
+                "--output-dir",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/13. Ayudante Doctor/2025_03 Proyecto innovación docente 2026 - IA para generar tests/TSVs/Procesado del Lenguaje Natural - GCD/M2_correction_results",
             ],
             "console": "integratedTerminal",
             "justMyCode": true
