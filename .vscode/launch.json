@@ -512,6 +512,35 @@
             "console": "integratedTerminal",
             "justMyCode": true
         },
+        {
+            "name": "autotestia correct pexams partial2 exam",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "correct",
+                "pexams",
+                "generated/mib/partial2/all.md",
+                "--input-path", "generated/mib/partial2/all_pexams_output/scanned.pdf",
+                "--exam-dir", "generated/mib/partial2/all_pexams_output",
+                "--output-dir", "generated/mib/partial2/all_pexams_output/correction_results",
+                "--input-csv", "generated/mib/partial2/all_pexams_output/grades.csv",
+                "--id-column", "ID estudiante",
+                // "--mark-column", "#Final [10]",
+                "--name-column", "Nombre",
+                "--simplify-csv",
+                "--fuzzy-id-match", "70",
+                // "--log-level", "DEBUG"
+                "--penalty", "0.25",
+                "--input-encoding", "utf-8",
+                "--input-sep", ",",
+                "--output-decimal-sep", ",",
+                "--evaluate-final",
+                "--only-analysis",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
 
 // Procesamiento del Lenguaje Natural -------------------------------------------------------------
         {
@@ -646,6 +675,162 @@
                 "--shuffle-answers", "123",
                 "--evaluate-final",
                 "--evaluator-model", "google/gemini-3-flash-preview",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        // Final Exam: alg audit
+        {
+            "name": "generate algaudit final exam (tema 1)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_01_Algoritmos_y_Machine_Learning.md", "-o", "generated/algaudit/all/1_algoritmos_y_machine_learning.md", "--generator-instructions", "todo es importante",
+                "-n", "10", "--generator-model", "google/gemini-3-pro-preview", "--reviewer-model", "google/gemini-3-flash-preview", "--evaluator-model", "google/gemini-3-flash-preview", "--use-llm-review", "--language", "es", "--evaluate-initial", "--evaluate-reviewed",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "generate algaudit final exam (tema 2)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_02_Historia_Conceptos_y_Aplicaciones_de_la_IA._ChatGPT.md", "-o", "generated/algaudit/all/2_historia_conceptos_y_aplicaciones_de_la_ia_chatgpt.md", "--generator-instructions", "la parte de la historia de la IA no entra; Entra: que es un sistema experto; diferencia entre cibernética y good old fashion AI. El resto todo",
+                "-n", "10", "--generator-model", "google/gemini-3-pro-preview", "--reviewer-model", "google/gemini-3-flash-preview", "--evaluator-model", "google/gemini-3-flash-preview", "--use-llm-review", "--language", "es", "--evaluate-initial", "--evaluate-reviewed",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "generate algaudit final exam (tema 3)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_03_Privacidad_de_datos_y_seguridad.md", "-o", "generated/algaudit/all/3_privacidad_de_datos_y_seguridad.md", 
+                "-n", "10", "--generator-model", "google/gemini-3-pro-preview", "--reviewer-model", "google/gemini-3-flash-preview", "--evaluator-model", "google/gemini-3-flash-preview", "--use-llm-review", "--language", "es", "--evaluate-initial", "--evaluate-reviewed",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "generate algaudit final exam (tema 4)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_04_Equidad_algorítmica_y_sesgos.md", "-o", "generated/algaudit/all/4_equidad_algoritmica_y_sesgos.md", 
+                "-n", "10", "--generator-model", "google/gemini-3-pro-preview", "--reviewer-model", "google/gemini-3-flash-preview", "--evaluator-model", "google/gemini-3-flash-preview", "--use-llm-review", "--language", "es", "--evaluate-initial", "--evaluate-reviewed",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "generate algaudit final exam (tema 5)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_05_Transparencia_y_explicabilidad.md", "-o", "generated/algaudit/all/5_transparencia_y_explicabilidad.md",
+                "-n", "10", "--generator-model", "google/gemini-3-pro-preview", "--reviewer-model", "google/gemini-3-flash-preview", "--evaluator-model", "google/gemini-3-flash-preview", "--use-llm-review", "--language", "es", "--evaluate-initial", "--evaluate-reviewed",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "generate algaudit final exam (tema 6)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",                
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_06_Seguridad_en_IA_avanzada.md", "-o", "generated/algaudit/all/6_seguridad_en_ia_avanzada.md",
+                "-n", "10", "--generator-model", "google/gemini-3-pro-preview", "--reviewer-model", "google/gemini-3-flash-preview", "--evaluator-model", "google/gemini-3-flash-preview", "--use-llm-review", "--language", "es", "--evaluate-initial", "--evaluate-reviewed",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        // {
+        //     "name": "generate algaudit final exam (tema 7)",
+        //     "type": "debugpy",
+        //     "request": "launch",
+        //     "program": "${workspaceFolder}/main.py",
+        //     "args": [
+        //         "generate",
+        //         "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_07_Estándares,_marco_legal_y_regulatorio.md", "-o", "generated/algaudit/all/7_estandares_marco_legal_y_regulatorio.md", "--generator-instructions", "todo es importante",
+        //         "-n", "10", "--generator-model", "google/gemini-3-pro-preview", "--reviewer-model", "google/gemini-3-flash-preview", "--evaluator-model", "google/gemini-3-flash-preview", "--use-llm-review", "--language", "es", "--evaluate-initial", "--evaluate-reviewed",
+        //     ],
+        //     "console": "integratedTerminal",
+        //     "justMyCode": true
+        // },
+        {
+            "name": "generate algaudit final exam (tema 8)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "generate",
+                "C:/Users/Oscar/My Drive (oscarj1994@gmail.com)/9. DOCENCIA/2025-2026/2nd sem - MSD - Auditoría de Algoritmos/Tema_08_Auditoria_de_LLMs.md", "-o", "generated/algaudit/all/8_auditoria_de_llms.md",
+                "-n", "10", "--generator-model", "google/gemini-3-pro-preview", "--reviewer-model", "google/gemini-3-flash-preview", "--evaluator-model", "google/gemini-3-flash-preview", "--use-llm-review", "--language", "es", "--evaluate-initial", "--evaluate-reviewed",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "merge algaudit final exam",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "merge",
+                "generated/algaudit/all/1_algoritmos_y_machine_learning.md",
+                "generated/algaudit/all/2_historia_conceptos_y_aplicaciones_de_la_ia_chatgpt.md",
+                "generated/algaudit/all/3_privacidad_de_datos_y_seguridad.md",
+                "generated/algaudit/all/4_equidad_algoritmica_y_sesgos.md",
+                "generated/algaudit/all/5_transparencia_y_explicabilidad.md",
+                "generated/algaudit/all/6_seguridad_en_ia_avanzada.md",
+                // "generated/algaudit/all/7_estandares_marco_legal_y_regulatorio.md",
+                "generated/algaudit/all/8_auditoria_de_llms.md",
+                "-o", "generated/algaudit/all/final_exam.md",
+                "--log-level", "DEBUG"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "export algaudit final exam to pexams",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "export",
+                // "wooclap",
+                "pexams",
+                "--shuffle-questions", "123",
+                "--shuffle-answers", "123",
+                "--evaluate-final",
+                "--evaluator-model", "google/gemini-3-flash-preview",
+                // pexams parameters
+                "generated/algaudit/all/final_exam.md",
+                "--exam-title", "Auditoría de Algoritmos - Examen Final",
+                "--exam-course", "Máster en Sociedad Digital",
+                "--shuffle-answers", "123",
+                "--exam-date", "2025-03-30",
+                "--num-models", "4",
+                "--font-size", "10pt",
+                "--lang", "es",
+                "--columns", "2",
+                "--max-image-height", "270",
+                "--keep-html",
+                "--custom-header", "**Instrucciones:** Las respuestas incorrectas serán penalizadas con **-0.333 puntos**. Solo se permite tener un bolígrafo, líquido corrector y su tarjeta de identificación encima de la mesa."
             ],
             "console": "integratedTerminal",
             "justMyCode": true
